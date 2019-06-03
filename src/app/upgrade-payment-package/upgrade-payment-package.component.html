@@ -1,0 +1,40 @@
+
+
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start" no-padding no-margin>
+         <ion-back-button no-padding no-margin></ion-back-button>
+      </ion-buttons>
+      <ion-title class="center-title margin-right-title">Payment</ion-title>
+      <ion-buttons slot="end">
+         <ion-icon slot="icon-only"  src="assets/cancel.svg"  (click)="ondismiss1()"></ion-icon>
+      </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content padding color="light" class="center-title">
+   <h5>Select Payment Method</h5>
+   <ion-card no-margin margin-top class="payment-card">
+      <ion-item *ngIf="dataService.userData.country_code=='+91'" lines="none" class="payment-card-item {{selected==0?'activated-tab':'border-payment'}}" (click)="selectTab(0,'payu')">
+      <ion-icon slot="start" src="assets/credit-card.svg"></ion-icon>
+      <ion-label text-wrap class="plan-title">Debit Card / Credit Card / Paytm / Net Banking / Wallets / EMI</ion-label>
+      </ion-item>
+      <ion-item *ngIf="dataService.userData.country_code!='+91'" lines="none" class="payment-card-item {{selected==1?'activated-tab':'border-payment'}}" (click)="selectTab(1,'paypal')">
+      <ion-icon slot="start" src="assets/paypal.svg"></ion-icon>
+      <ion-label text-wrap class="plan-title">Debit Card / Credit Card</ion-label>
+      </ion-item>
+     <!--  <ion-item *ngIf="dataService.userData.country_code=='+91'" lines="none" class="payment-card-item {{selected==2?'activated-tab':'border-payment'}}" (click)="selectTab(2,'paytm')">
+      <ion-icon src="assets/3-icon.svg" slot="start"></ion-icon>
+      <ion-label class="plan-title">PAYTM</ion-label>
+      </ion-item> -->
+      <ion-item lines="none" class="payment-card-item {{selected==3?'activated-tab':'border-payment'}}" (click)="selectTab(3,'manual')">
+         <ion-icon src="assets/bank.svg" slot="start"></ion-icon>
+         <ion-label class="plan-title">Manual Bank Transfer</ion-label>
+      </ion-item>
+   </ion-card>
+   <ion-item lines="none" class="save-payment-method">
+      <ion-checkbox item-left style="margin-right: 5px;" [(ngModel)]="entry.isChecked"></ion-checkbox>
+      <ion-label style="font-size: 0.8rem;color:#999">SAVE PAYMENT METHOD</ion-label>
+   </ion-item>
+   <img src="assets/secure-payment-icon.png" style="margin-top: 30px;width: 30%;">
+</ion-content>
+

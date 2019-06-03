@@ -1,0 +1,108 @@
+
+.main{
+	text-align: center;
+}
+	.segment-icon{
+		font-size: 1.4rem!important;
+		margin-right: 5px;
+	}
+	.segment-icon img{
+		width: 12px;
+		height: 12px;
+	}
+	.label-name{
+		float:left;
+		width: 90px;
+		font-size: 1.2rem;
+		align-self:center;
+		text-align: left;		
+	}
+	.input-div{
+		width: 100%;
+		float: left;
+		display: flex;
+		margin-top:15px;
+	}
+	.label-input{
+		padding:5px;
+		width:calc(100% - 170px);
+		float:left;
+		border:1px solid #708C3A;
+		border-radius: 5px;
+		height: 40px;
+	}
+	.label-input_ft1{
+		padding:5px;
+		width:calc(50% - 90px);
+		float:left;
+		border:1px solid #708C3A;
+		border-radius: 5px;
+		margin-right: 10px;
+	}
+	.label-input_ft2{
+		padding:5px;
+		width:calc(50% - 90px);
+		float:left;
+		border:1px solid #708C3A;
+		border-radius: 5px;
+	}
+	.bmi-result{
+		width: 100%;
+		text-align: center;
+		font-size: 3rem;
+		color: #708C3A
+	}
+	.bmi-label{
+		width: 100%;
+		text-align: center;
+		font-size: 1.2rem;
+		color: #777
+	}
+	.date-header{
+		width: 100%;
+		text-align: center;
+		color:#999;
+		font-size: 1.0rem;
+		margin-bottom: 20px;
+	}
+	.middel-label{
+		    color: #fff;
+		    background: rgb(112, 140, 58);
+		    font-size: 0.8rem;
+	}
+td{
+		background: rgba(52, 181, 82,0.1);
+		border-left: 4px solid #fff;
+		border-right: 4px solid #fff;
+	}
+th,td{
+		padding:3px;
+		width: 50%;
+		font-size: 1.2rem;
+		word-break: break-all;
+	}
+	th{
+		word-break: break-all;
+		font-size: 2rem;
+		color:#708C3A;
+		font-weight: 300
+	}
+	.select-text{
+		font-size: 1.3rem;
+	}
+	.text-input-md {
+	    text-align: center;
+	}	
+	.hr {
+    height: 1px;
+    border-width: 1px;
+    box-sizing: content-box;
+}
+.selecter{
+	>input{
+		margin: 0!important;
+		padding: 5px!important;
+	}
+}
+	
+ 

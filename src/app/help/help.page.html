@@ -1,0 +1,58 @@
+
+
+<ion-header>
+   <ion-toolbar>
+      <ion-buttons slot="start">
+         <ion-back-button no-margin no-padding color="primary"></ion-back-button>
+      </ion-buttons>
+      <ion-title></ion-title>
+   </ion-toolbar>
+</ion-header>
+<ion-content padding>
+   <ion-grid style="padding-top: 18%;">
+      <div style="width: 100%;text-align: center;">
+         <img src="assets/logo.png" style="max-width: 65%;">
+      </div>
+      <div>
+         <h2><b> Got a question? We are here to help!</b></h2>
+      </div>
+      <ion-row>
+         <ion-col size="12" color="primary" style="color:#708C3A">
+               <ion-item no-padding no-margin lines="none" (click)="onSendEmail('info@dietinsight.in')">
+                  <ion-icon name="mail" slot="start" color="success"></ion-icon>
+                  <ion-label color="success">info@dietinsight.in</ion-label>
+               </ion-item>
+                <ion-item no-padding no-margin lines="none" (click)="onCall('+919870481482')">
+                  <ion-icon name="call" slot="start" color="success"></ion-icon>
+                  <ion-label color="success">+91 9870481482</ion-label>
+               </ion-item>
+                <ion-item no-padding no-margin lines="none" (click)="onChat()">
+                  <ion-icon src="assets/chat-new-icon.svg" slot="start" color="success"  ></ion-icon>
+                  <ion-label color="success">Customer Support</ion-label>
+               </ion-item>
+              <!--   <ion-item no-padding no-margin lines="none" >
+                 <ion-icon src="assets/auricular-phone-symbol-in-a-circle.svg" color="primary"  slot="start" (click)="onCall('+919870481482')"></ion-icon>
+                 <ion-label></ion-label>
+                 <ion-icon src="assets/chat-new-icon.svg" color="primary"  slot="start" (click)="onChat()"></ion-icon>
+               </ion-item> -->
+         </ion-col>
+      </ion-row>
+   </ion-grid>
+   <!-- fab placed in the center of the content with a list on each side -->
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="onPop()">
+         <ion-icon name="close"></ion-icon>
+      </ion-fab-button>
+   </ion-fab>
+</ion-content>
+
+   <!--  <ion-fab-list side="top">
+         <ion-fab-button (click)="onCall('+919870481482')">
+            <ion-icon src="assets/auricular-phone-symbol-in-a-circle.svg" color="primary" style="font-size: 1.4rem;"></ion-icon>
+         </ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="start">
+         <ion-fab-button (click)="onChat()">
+            <ion-icon src="assets/chat-new-icon.svg" color="primary" style="font-size: 1.4rem;"></ion-icon>
+         </ion-fab-button>
+      </ion-fab-list> -->

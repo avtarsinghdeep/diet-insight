@@ -1,0 +1,8 @@
+{
+  "name": "dietinsight",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "79fc92bf"
+}

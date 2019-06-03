@@ -1,0 +1,37 @@
+<div style="width: 100%;background: url(/assets/icon/4.png);background-size: cover;background-position: center;position: relative;min-height:380px;">
+	<div style="text-align: center;display: flex;position: absolute;width: 100%;height: 90px;top: 0px;left: 0;">
+		<p style="display: inline-block;align-items: center;margin: auto;color: #fff;font-size: 20px;">
+			<span style="font-size: 0.9rem;">
+				Select your
+			</span>
+			<br/>
+			City
+		</p>
+	</div>
+	<div style="position: absolute;background: #fff;width: 100%;bottom:0px;left: 0;height:280px">
+		<div style="height: 225px;width: 100%;">
+			<div style="height: 45px;width: 100%;">
+				<ion-searchbar [(ngModel)]="myInput" no-padding (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+				</ion-searchbar>
+			</div>
+			<div style="overflow-x: scroll;height: 180px;width: 100%;">
+				<ion-list lines="none" no-margin no-padding  style="margin-left: 15px;">
+				  <ion-radio-group  *ngFor="let c of cities;" class="login-input-gender" (ionChange)="selectcity(c)" >
+					  <ion-item text-wrap  lines="none" no-margin no-padding class="login-input-gender-option">
+					    <ion-radio value="{{c.name}}" margin-end></ion-radio>
+					    <ion-label text-wrap style="font-size:0.8rem;">{{c.name}}</ion-label>
+					  </ion-item>
+				  </ion-radio-group>
+				</ion-list>
+			</div>
+		</div>
+  		<div class="buttons-item" lines="none" no-margin no-padding style="text-align: center;margin-top: 8px;">
+			<ion-button no-padding no-margin style="margin:0 2px;width: 80px;border-radius:5px;background:linear-gradient(45deg,#34B552,#04B5A8)" (click)="cancel()">
+					CANCEL
+			</ion-button>
+			<ion-button no-padding no-margin style="margin:0 2px;width: 80px;border-radius:5px;background:linear-gradient(45deg,#34B552,#04B5A8)" (click)="check()">
+					OK
+			</ion-button>
+		</div>
+	</div>
+</div>

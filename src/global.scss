@@ -1,0 +1,101 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+.invalid-input {
+    text-align: center;
+    font-size: 0.7rem;
+    color: red;
+    width: 100%;
+    float: left;
+}
+.invalid-input1 {
+    text-align: left;
+    font-size: 0.7rem;
+    color: red;
+    width: 100%;
+    float: left;
+    padding-top: 5px;
+}
+.mainHeader{
+ 	background: #ddd!important;
+}
+.center-title{
+	text-align: center;
+}
+.margin-right-title{
+	// margin-right: 42px;
+}
+.header-md:after {
+    left: 0;
+    bottom: -8px;
+    background-position: left 0 top 0;
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background-image: none;
+    background-repeat: repeat-x;
+    content: "";
+}
+@font-face {
+    font-family: "Great Vibes";
+    src: url("assets/fonts/GreatVibes-Regular.otf") format("opentype");
+}
+.alert-radio-label.sc-ion-alert-md,.alert-radio-label.sc-ion-alert-ios {
+    padding-left: 35px!important;
+    font-size: 12px;
+    white-space: normal;
+}
+.select-alert{
+    >.alert-wrapper{
+        >.alert-head{
+            background: #708C3A!important;
+            >.alert-title{
+                color:#fff!important;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.sc-ion-segment-ios-h.sc-ion-segment-ios-s{
+    padding-top: 10px;
+  .segment-button-checked {
+        background: none !important;
+        color: black;
+        border-bottom: 2px solid #020202;
+    }
+    div{
+        padding-bottom: 10px;
+    }
+
+    span{
+        padding-bottom: 10px;
+    }
+}
+
+
+.custom-popover .popover-content {
+    width: 75%;
+    top: 82.5 !important;
+    left: 40px;
+}
+
+.custom-popover1 .popover-content {
+    width: 75%;
+    top: 30px !important;
+    left: 40px;
+}
+
+.custom-popover-manual .popover-content {
+    width: 80% !important;
+    top: 82.5 !important;
+    left: 40px !important;
+}

@@ -1,0 +1,38 @@
+<div style="width: 100%;background: url(/assets/icon/4.png);background-size: cover;background-position: center;position: relative;min-height:350px;">
+	<div style="text-align: center;display: flex;position: absolute;width: 100%;height: 150px;top: 0px;left: 0;">
+		<p style="display: inline-block;align-items: center;margin: auto;color: #fff;font-size: 20px;">
+			<span style="font-size: 0.9rem;">
+				Enter your
+			</span>
+			<br/>
+			Weight
+		</p>
+	</div>
+	<div style="position: absolute;background: #fff;width: 100%;bottom:0px;left: 0;height:210px">
+		<div style="height: 148px;width: 100%;" padding>
+			<ion-grid class="detail-selecter" no-padding no-margin>
+                <ion-row no-padding no-margin>
+                   <ion-col style="border-right:1px solid #ddd;" size="8" no-padding no-margin>
+                      <ion-item lines="none">
+                         <ion-input type="number" [(ngModel)]="weight" placeholder="Enter Weight"></ion-input>
+                      </ion-item>
+                   </ion-col>
+                   <ion-col (click)="weightSelecter=true" class="{{weightSelecter?'background-selected':'background'}}" style="border-right:1px solid #ddd;" size="2" no-padding no-margin>
+                      <p style="text-align:center;margin:16px 0;font-size: 0.7rem;">Kgs</p>
+                   </ion-col>
+                   <ion-col (click)="weightSelecter=false" class="{{weightSelecter?'background':'background-selected'}}" style="" size="2" no-padding no-margin>
+                      <p style="text-align:center;margin:16px 0;font-size: 0.7rem;">Lbs</p>
+                   </ion-col>
+                </ion-row>
+            </ion-grid>
+		</div>
+  		<div class="buttons-item" lines="none" no-margin no-padding style="text-align: center;margin-top: 2px;">
+			<ion-button no-padding no-margin style="margin:0 2px;width: 80px;border-radius:5px;" (click)="cancel()">
+					CANCEL
+			</ion-button>
+			<ion-button no-padding no-margin style="margin:0 2px;width: 80px;border-radius:5px;" [disabled]="weight==null||weight==''||weight==undefined" (click)="check()">
+					OK
+			</ion-button>
+		</div>
+	</div>
+</div>

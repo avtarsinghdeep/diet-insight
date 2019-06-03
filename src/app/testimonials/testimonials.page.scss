@@ -1,0 +1,49 @@
+.list__item--shadow{
+  margin: 2%;
+  width: 96%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 5px 1px #ddd;
+}
+.testimonial_img{
+    object-fit: cover;
+    min-height: 200px;
+    width: 100%;
+    display: block;
+}
+.myOverlay{
+  width: 100%;
+  height: 35px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0px;
+  opacity: 0.8;
+  background: #fff7f7;
+  color: #000;
+  display: flex;
+  align-self:center;
+}
+.card-title{
+  font-size: 11px;
+  width: calc(100% - 25px);
+  align-self: center;
+  margin-left: 10px;
+  color: #000;
+  font-weight: 500;
+  word-spacing: 2px;
+}
+.img__forward{
+  align-self: center;
+  width: 20px;
+  height: 25px;
+}
+.header-buttons{
+  width: 35px;
+  --padding-end:0;
+  --padding-start:0;
+  margin: 0;
+}
+.center-title{
+  // padding-left: 70px;
+}

@@ -1,0 +1,27 @@
+
+
+<div>
+   <ion-grid>
+      <div class="package-upgrade-header">
+         <b>Select Break Duration</b>
+      </div>
+      <ion-row>
+         <ion-col size="6" size-sm>
+            <ion-label><b>From</b></ion-label>
+            <ion-item no-padding>
+               <ion-datetime display-format="DD-MMM-YYYY"  min="2019" max="2031"  placeholder="DD-MM-YYYY" no-padding></ion-datetime>
+            </ion-item>
+         </ion-col>
+         <ion-col size="6" size-sm>
+            <ion-label><b>To</b></ion-label>
+            <ion-item no-padding>
+               <ion-datetime display-format="DD-MMM-YYYY" min="2019" max="2031"  placeholder="DD-MM-YYYY" no-padding></ion-datetime>
+            </ion-item>
+         </ion-col>
+      </ion-row>
+      <div class="upgrade-btn-div">
+         <ion-button class="upgrade-small-btn" color="primary" (click)="onSubmit()">Submit</ion-button>
+      </div>
+   </ion-grid>
+</div>
+

@@ -1,0 +1,107 @@
+
+
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+         <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">My Files</ion-title>
+      <ion-buttons slot="end">
+         <ion-button (click)="info()" class="header-buttons">
+            <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+         </ion-button>
+      </ion-buttons>
+   </ion-toolbar>
+   <ion-segment [(ngModel)]="value" (ionChange)="SegmentFunc($event)">
+   <ion-segment-button value="2">
+      <ion-label>Received Files</ion-label>
+   </ion-segment-button>
+    <ion-segment-button value="1">
+      <ion-label>Sent Files</ion-label>
+   </ion-segment-button>
+   </ion-segment>
+</ion-header>
+<ion-content>
+   <!-- Default Segment -->
+
+   <div [ngSwitch]="value">
+      <ion-list *ngSwitchCase="'1'">
+         <ion-item-sliding *ngFor="let a of sent_file;let i=index">
+            <ion-item>
+               <ion-avatar slot="start" >
+                  <img src={{a.message}} *ngIf="getImg(a.message)">
+                  <img src="assets/docimg.png" *ngIf="getdoc(a.message)">
+                  <img src="assets/pdfimg.png" *ngIf="getpdf(a.message)">
+               </ion-avatar>
+               <ion-label>
+                  <h3 style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" (click)="onView1(a.message)">  {{a.filename}}</h3>
+                  <p>
+                     {{a.created_at | date:'short'}}
+                  </p>
+                  <p>
+                     <span (click)="onView1(a.message,i)" style="width: 40%;font-size: 18px;" [ngStyle]="{'color': i==preview1?buttonColor1:''}" > 
+                        <ion-icon slot="start" name="eye"></ion-icon>
+               View
+                     </span>
+                     <span (click)="onDownload1(i,a.message,a.filename)" style="width: 40%; font-size: 18px;margin-left: 15px;" [ngStyle]="{'color': i==download1?downloadbuttonColor:''}">
+                        <ion-icon slot="start" name="cloud-download"></ion-icon>
+                  Download 
+                     </span>
+                  </p>
+               </ion-label>
+               <ion-spinner name="bubbles" *ngIf="i==percIndex1 && perc1!=100">{{perc1}}</ion-spinner>
+            </ion-item>
+           <!--  <ion-item-options>
+               <ion-item-option color="primary" (click)="onView(a.message)">
+                  <ion-icon slot="start" name="eye"></ion-icon>
+                  View
+               </ion-item-option>
+               <ion-item-option color="secondary" (click)="onDownload(i,a.message,a.filename)">
+                  <ion-icon slot="start" name="cloud-download"></ion-icon>
+                  Download
+               </ion-item-option>
+            </ion-item-options> -->
+         </ion-item-sliding>
+      </ion-list>
+      <ion-list *ngSwitchCase="'2'">
+         <ion-item-sliding *ngFor="let a of recieved_file;let i=index">
+            <ion-item>
+               <ion-avatar slot="start" >
+                  <img src={{a.message}} *ngIf="getImg(a.message)">
+                  <img src="assets/docimg.png" *ngIf="getdoc(a.message)">
+                  <img src="assets/pdfimg.png" *ngIf="getpdf(a.message)">
+               </ion-avatar>
+               <ion-label >
+                  <h3 style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" (click)="onView(a.message)">  {{a.filename}}</h3>
+                  <p>
+                     {{a.created_at | date:'short'}}
+                  </p>
+                  <p>
+                     <span (click)="onView(a.message,i)" style="width: 40%;font-size: 18px;" [ngStyle]="{'color': i==preview?buttonColor:''}">
+                        <ion-icon slot="start" name="eye" ></ion-icon>
+                  View
+                     </span>
+                     <span (click)="onDownload(i,a.message,a.filename)" style="width: 40%; font-size: 18px;margin-left: 15px;"  [ngStyle]="{'color': i==download?downloadbuttonColor:''}">
+                        <ion-icon slot="start" name="cloud-download"></ion-icon>
+                  Download 
+                     </span>
+                  </p>
+               </ion-label>
+               <ion-spinner name="bubbles" *ngIf="i==percIndex && perc!=100">{{perc}}</ion-spinner>
+            </ion-item>
+          <!--   <ion-item-options>
+               <ion-item-option color="primary" (click)="onView(a.message)">
+                  <ion-icon slot="start" name="eye"></ion-icon>
+                  View
+               </ion-item-option>
+               <ion-item-option color="secondary" (click)="onDownload(i,a.message,a.filename)">
+                  <ion-icon slot="start" name="cloud-download"></ion-icon>
+                  Download
+               </ion-item-option>
+            </ion-item-options> -->
+         </ion-item-sliding>
+      </ion-list>
+   </div>
+</ion-content>
+

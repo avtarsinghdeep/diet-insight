@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+  	<ion-buttons slot="start">
+      <ion-back-button no-margin no-padding></ion-back-button>
+    </ion-buttons>
+    <ion-title class="center-title">Medical Profile</ion-title>
+    <ion-buttons slot="end">
+    	<ion-button (click)="skip()">Skip
+	      <ion-icon slot="icon-only" name="share-alt"></ion-icon>
+	    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div class="bg-login-bg">
+		<div style="width: 100%;" class="bg-login">
+			<div style="background: #fff;border-radius:10px;width: 100%;padding:10px;" >
+				<form [formGroup]="medical_profile">
+					<ion-item lines="none" no-padding>
+						<ion-label>Choose your food preference</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+					    <ion-label style="color:#777;">Choose food preference</ion-label>
+					    <ion-select formControlName="food_preference" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Choose food preference" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="Vegan">Vegan</ion-select-option>
+					      <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
+					      <ion-select-option value="Non-Vegetarian">Non-Vegetarian</ion-select-option>
+					      <ion-select-option value="Eggetarian (Ovotarian)">Eggetarian (Ovotarian)</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['food_preference'].valid || !medical_profile.controls['food_preference'].touched">
+				      Please select your food preference 
+				    </div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Any food allergies?</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+						<ion-input formControlName="food_allergy" style="" placeholder="Enter food allergies"></ion-input>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['food_allergy'].valid || !medical_profile.controls['food_allergy'].touched">
+				      Please enter food allergies 
+				    </div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>How many times you eat out?</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+						<ion-input formControlName="times_you_eat" style="" placeholder="Enter time"></ion-input>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['times_you_eat'].valid || !medical_profile.controls['times_you_eat'].touched">
+				      Please enter the value
+				    </div>
+				</form>
+			</div>
+			<ion-button (click)="submit()" class="next-button" shape="round" color="success">Next</ion-button>
+		</div>
+	</div>
+</ion-content>

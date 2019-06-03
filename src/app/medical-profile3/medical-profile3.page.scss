@@ -1,0 +1,28 @@
+.bg-login-bg{
+	float: left;
+	min-height: 100%;
+	width: 100%;
+	background-attachment: fixed;
+	background-image: url(/assets/bg.png);
+	background-repeat: no-repeat;
+    background-position: center;  
+    background-size: cover;
+}
+.bg-login{
+	float: left;
+    position: relative;
+    height: 100%;width: 100%;
+    text-align: center;
+    padding: 30px;
+}
+.detail-selecter{
+	border: 2px solid #bbb;
+    border-radius: 5px;
+}
+.submit-button{
+	width: 80%;
+	margin: 40px auto;
+}
+.center-title{
+	margin-left: 35px;
+}

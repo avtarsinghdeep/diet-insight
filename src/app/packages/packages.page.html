@@ -1,0 +1,81 @@
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+         <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+         <ion-menu-button no-margin no-padding></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">Packages</ion-title>
+      <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content class="packagecontent">
+   <div class="mypackage">My package</div>
+   <ion-card class="package-card" *ngIf="packages">
+      <ion-card-header class="card-header">
+         <div class="header-div" style="color: #000">
+            <span class="pull-left pull-icon">
+               <ion-icon src="assets/diet.svg" slot="start" class="package-icon"></ion-icon>
+               My package
+            </span>
+            <span class="pull-right">
+               <!-- for hold value=1 and play value=2 -->
+               <ion-button size="small" class="package-small-btn" color="lightgreen"
+                (click)="onBreak(value?2:1)">{{value?'Resume package':'Put on Hold'}}</ion-button>
+            </span>
+         </div>
+      </ion-card-header>
+      <ion-card-content>
+         <div class="package-main-header">
+            {{packages.service_name}}
+         </div>
+         <div  class="header-div1">
+          <span class="pull-left p-5">Current status:</span>
+          <span class="pull-right p-5">
+            {{value?'On Hold':'Active'}}</span>
+       </div>
+         <div  class="header-div1">
+            <span class="pull-left p-5">Plan date:</span>
+            <span class="pull-right p-5">{{packages.start_date}}</span>
+         </div>
+         <div  class="header-div1">
+            <span class="pull-left p-5">Exp. date:</span>
+            <span class="pull-right p-5">{{packages.expire_date}}</span>
+         </div>
+         <div  class="header-div1">
+            <span class="pull-left p-5">Duration time:</span>
+            <span class="pull-right p-5">{{packages.variation_duration}}</span>
+         </div>
+      </ion-card-content>
+   </ion-card>
+   <div class="mypackage">Upgrade your package</div>
+  <!-- <hr style="    border-width: 1px;
+  border-color: #f1f1f1;
+  width: 50%;"> -->
+  <div style="text-align: center;">
+    <span style="font-size: 13px;
+    color: #6b6b6b;">(Upgrades are only allowed within the first 10 Days of your enrolment)</span>
+  </div>
+   <ion-card class="package-card" *ngIf="variations">
+      <ion-card-header class="card-header" *ngFor="let pac of variations" >
+         <div class="header-div" >
+            <span class="pull-left pull-icon">
+               <ion-icon src="assets/diet.svg" slot="start" class="package-icon"></ion-icon>
+               {{pac.duration_no}} {{pac.duration_type}}, (Rs.{{pac.duration_price_inr}}) (${{pac.duration_price_us}})
+            </span>
+            <span class="pull-right" (click)="pac.status&&pac.upgrade_status?upgradePackage(pac.variation_id,pac.duration_price_inr,pac.duration_price_us):''">
+               <ion-button size="small" class="package-small-btn" color="lightgreen" [ngStyle]="{'background-color':pac.status&&pac.upgrade_status ? '' : '#dddddd' }">upgrade</ion-button>
+
+               <!--  upgrade_status if true it means package within last 10 days  -->
+            </span>
+         </div>
+          
+      </ion-card-header>
+      <div class="capitalize">
+      <a (click)="services()">View our all services</a>
+      </div>
+   </ion-card>
+</ion-content>

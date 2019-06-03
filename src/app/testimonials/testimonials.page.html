@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+       <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center-title">Testimonials</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  class="header-buttons" (click)="onReview()">
+        <ion-icon src="assets/add.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button  class="header-buttons" (click)="notification()">
+        <ion-icon src="assets/alert.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button  class="header-buttons" (click)="info()">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div lines="none" (click)="onTestimonials(testimonial)" class="list__item--shadow" *ngFor="let testimonial of testimonials">
+    <img src="{{testimonial.image}}" class="testimonial_img">
+    <div class="myOverlay">
+        <div class="card-title">{{testimonial.title}}</div>
+        <ion-img src="../../assets/right-arrow.svg" class="img__forward"> </ion-img>
+    </div>
+  </div>
+</ion-content>

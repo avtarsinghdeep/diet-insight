@@ -1,0 +1,90 @@
+.header-buttons{
+	width: 35px;
+	--padding-end:0;
+	--padding-start:0;
+	margin: 0;
+}
+.center-title{
+	padding-left: 30px;
+}
+.reschedule_card-header{
+	background:#fff; 
+	margin-bottom: 3px;
+	padding: 10px;
+	color:#94c03e;
+	>ion-icon{
+		float: right;
+	}
+}
+.reschedule_card-date{
+	background:#fff;
+	margin-bottom: 15px;
+}
+.reschedule_card-time{
+	background:#fff; 
+	margin-bottom: 15px;
+	>ion-grid{
+		padding: 0;
+		margin: 0;
+		>.header{
+			padding: 0;
+			margin: 0;
+			text-align: center;
+			font-size: 0.6rem;
+			color: #000;
+		};
+		>.content{
+			text-align: center;
+			>.content-selecter{
+				>.content-selecter-row{
+					>.content-selecter-row-col{
+						display: flex;
+					    align-items: center;
+					    text-align: right;
+					    >p{
+					    	width: 100%;
+    						text-align: center;
+					    }
+					};
+					>.content-selecter-row-col1{
+						>.content-selecter-row-col-row{
+							height: 50%;
+							font-size: 0.7rem;
+							padding-bottom: 2px;
+							padding-top: 2px;
+						    >p{
+						    	width: 100%;
+	    						text-align: center;
+	    						>ion-icon{
+	    							color: #999
+	    						}
+						    };
+						};
+						>.even{
+							align-content:flex-end;
+						};
+					};
+					height: 100%;
+				};
+				color:#94c03e;
+				background: #ddd;
+				border:2px solid #fff;
+				border-radius: 5px;
+				font-size: 1.1rem;
+				height: 65px;
+			};
+			>.content-dot{
+				display: flex;
+			    align-items: center;
+			    text-align: right;
+				height: 65px;
+				>p{
+					font-weight: bolder;
+					font-size: 1.1rem;
+					width: 100%;
+					text-align: center;
+				}
+			} 
+		}
+	}
+}

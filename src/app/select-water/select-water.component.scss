@@ -1,0 +1,128 @@
+	.login-input-gender{
+		height: 30px!important;
+		min-height: unset;
+		border:none;
+		background-color: transparent;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		font-size: 1.1rem;
+	}
+	.login-input-gender-option{
+		float: left;
+		padding-right: 10px;
+		padding-left: 15px;
+		// height: 35px!important;
+		min-height: unset;
+		border:none;
+		background-color: transparent;
+		border-radius: 10px;
+		font-size: 1.1rem;
+		width: 100%;
+	}
+.detail-selecter{
+				  border: 2px solid #bbb;
+				    border-radius: 5px;
+				}
+				.background-selected {
+  box-shadow: inset 0 0 10px #aaa;
+  background: #ddd;
+  visibility: visible;
+}
+
+.background {
+  visibility: visible;
+}
+.radio-item{
+		width: 49%;
+		// display: inline;
+		font-size: 1.2rem;
+		text-align: left;
+		float: left;
+		height: 30px!important;
+		min-height: unset;
+	}
+	.radio-item ion-radio{
+		margin:0!important;
+		display: inline-block!important;
+	}
+	.radio-item ion-radio ion-label{
+		display: inline-block!important;
+		margin: 0!important;
+	}
+	.radio-item .radio-md .radio-icon{
+		width: 14px;
+		height: 14px;
+	}
+	.radio-item .radio-md .radio-icon .radio-inner{
+		width: 6px!important;
+		height: 6px!important;
+	}
+	.buttons-item ion-label{
+		margin: 0;
+		padding: 0;
+	}
+	.option-label{
+		font-size: 4rem;
+		margin-right: 0!important;
+		margin-left: 5px!important;
+	}
+	.option-label-1{
+		font-size: 1rem;
+		margin-right: 0!important;
+		margin-left: 5px!important;
+	}
+	.main-body{
+		width: 100%;
+		background: url(/assets/dietitian-slide-1.jpg);
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		min-height:350px;
+	}
+	.main-header{
+		text-align: center;
+		display: flex;
+		position: absolute;
+		width: 100%;
+		height: 150px;
+		top: 0;
+		left: 0;
+	}
+	.main-content{
+		position: absolute;
+		background: #fff;
+		width: 100%;
+		height: 200px;
+		top: 150px;
+		left: 0;
+	}
+	.main-header p{
+		display: inline-block;
+		align-items: center;
+		margin: auto;
+		color: #fff
+	}
+	.water-buttons{
+		width: 25px!important;
+		height: 25px!important;
+		padding: 0!important;
+		margin:0!important;
+		background:#708C3A;
+		color:#fff;
+	}
+	.submit-button{
+		width: 80px;
+		background:linear-gradient(45deg,#34B552,#04B5A8)
+	}
+	.bottum-div{
+		position: absolute;
+		background: #fff;
+		width: 100%;
+		top: 220px;
+		left: 0;
+		height:160px;
+	}
+	.water-item{
+		padding-left: 50px!important;
+		padding-right: 50px!important;
+	}

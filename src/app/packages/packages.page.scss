@@ -1,0 +1,93 @@
+.packagecontent {
+	background: #222;
+	color: #000;
+}
+
+.mypackage {
+	width: 100%;
+	text-align: center;
+	padding: 25px 0px 10px 0px;
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+.capitalize{
+	text-transform: capitalize;
+	width: 100%;
+	text-align: center;
+	padding: 25px 0px 24px 0px;
+	font-size: 1.0rem;
+}
+.packagecontent {
+	font-size: 1.0rem;
+	--ion-background-color: #e6e6e6;
+}
+
+.header-div {
+	width: 100%;
+	float: left;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-icon {
+	margin-top: 5px;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.pull-right {
+	float: right;
+}
+
+.package-icon {
+	font-size: 18px;
+	margin-right: 2px;
+}
+
+.package-card {
+	background: #fff;
+}
+
+.card-header {
+	margin: 0 !important;
+	padding: 15px 10px 15px 10px;
+	border-bottom: 1px solid #d0d0d0;
+	height: 60px;
+}
+
+.package-small-btn {
+	width: 85%;
+	font-size: 10px;
+	background: #708C3A;
+	border-radius: 4px;
+}
+.package-small-btn-disable {
+	width: 85%;
+	font-size: 10px;
+	background: #dddddd;
+	border-radius: 4px;
+}
+
+.package-main-header {
+	width: 100%;
+	float: left;
+	margin: 10px 0px 10px 0px;
+	color: #000;
+	font-size: 1.0rem;
+	font-weight: 500;
+}
+
+.header-div1 {
+	width: 100%;
+	font-size: 14px;
+	float: left;
+	line-height: 25px;
+	font-weight: 500;
+	color: #000;
+}
+
+.p-5 {
+	padding: 5px;
+}

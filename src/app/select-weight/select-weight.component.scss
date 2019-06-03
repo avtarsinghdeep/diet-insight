@@ -1,0 +1,48 @@
+	.login-input-gender{
+		height: 30px!important;
+		min-height: unset;
+		border:none;
+		background-color: transparent;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		font-size: 1.1rem;
+	}
+	.login-input-gender-option{
+		float: left;
+		padding-right: 10px;
+		padding-left: 15px;
+		// height: 35px!important;
+		min-height: unset;
+		border:none;
+		background-color: transparent;
+		border-radius: 10px;
+		font-size: 1.1rem;
+		width: 100%;
+	}
+.detail-selecter{
+				  border: 2px solid #bbb;
+				    border-radius: 5px;
+				}
+				.background-selected {
+  box-shadow: inset 0 0 10px #aaa;
+  background: #ddd;
+  visibility: visible;
+}
+
+.background {
+  visibility: visible;
+}
+
+// ion-popover{
+// 	>.popover-wrapper{
+// 		>.popover-content {
+// 			top: 0px !important;
+// 		}
+// 	}
+// }
+// .custom-popover .popover-content{
+// 	top: 0px !important;
+// }
+// ion-popover .popover-wrapper .popover-content {
+// 	top: 0px !important;
+// }

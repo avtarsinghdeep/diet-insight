@@ -1,0 +1,222 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center-title">Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="profile()" class="header-buttons">
+          <ion-icon name="person" slot="icon-only"></ion-icon>
+        <!-- <ion-icon src="assets/alert.svg" slot="icon-only" ></ion-icon> -->
+      </ion-button>
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid style="padding:15px 10px;box-shadow: 0 0 20px 10px #eee">
+    <ion-row>
+        <ion-card class="dashboard-card1" >
+          <ion-grid >
+            <ion-row>
+              <ion-col size="3.5" >
+                <img src={{dataService.userData.profile_image}}  class="profile-img" style="width: 80px;height: 80px;position: relative;" >
+               <ion-icon name="md-create" style="position: absolute;bottom: 30px;right:5px;border-radius: 50px;border: 1px solid #fff;background: #708C3A;color: #fff" (click)="editProfile()"></ion-icon>
+              </ion-col>
+              <ion-col size="8" style="align-self:center;color:black;">
+              <div style="margin-bottom: 7px;font-size: 17px;">
+                <b>Welcome {{dataService.userData.firstname}} ! </b>
+                <span style="float: right;" (click)="onRefresh()">
+                  <ion-icon name="refresh" style="font-size: 25px;color: #708C3a;"></ion-icon>
+                </span>
+              </div>
+                <div style="margin-bottom: 7px;font-size: 13px;">
+                <b>  Diet Counsellor:  </b>{{dataService.dietician_name?dataService.dietician_name:'None'}}
+                </div>
+                <div style="margin-bottom: 3px;font-size: 13px;">
+                 <b> Head Dietitian:  </b> Dt. Lavleen Kaur 
+                </div>
+                <div style="margin-bottom: 3px;font-size: 13px;">
+                  <b> Package:  </b> {{onBreak?'On Hold':'Active'}} 
+                 </div>
+             
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row> 
+</ion-grid>
+
+<!--     <ion-grid style="padding:15px 10px;box-shadow: 0 0 20px 10px #eee">
+      <ion-row>
+        <ion-col size="4" class="profile-img-div">
+          <img src={{dataService.userData.profile_image}} width="65px" height="65px" class="profile-img">
+        </ion-col>
+        <ion-col size="8" style="align-self: center;">
+          <ion-row style="font-size: 1.1rem;font-family: Great Vibes;line-height: 1.9;">Welcome {{dataService.userData.firstname}} !</ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <ion-grid padding>
+            <ion-row *ngIf="length<1" >
+        <ion-card class="dashboard-card" >
+          <ion-grid >
+            <ion-row>
+              <ion-col size="3.5" ><img src="assets/food.png"></ion-col>
+              <ion-col size="6" style="align-self:center;color:black;font-size: 1rem;">Next Meal</ion-col>
+              <ion-col size="2.5" style="align-self: center;">
+                <ion-button fill="clear" color="dark" (click)="onAddMeal('1')">
+                  <ion-icon name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid #ddd;">
+              <ion-col padding-start style="color:#000;"><ion-icon style="margin: -2px;" name="restaurant"></ion-icon> No diet plan</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row>
+
+      <ion-row *ngFor="let a of dietchart" [hidden]="check(a)" >
+        <ion-card class="dashboard-card" >
+          <ion-grid >
+            <ion-row>
+              <ion-col size="3.5" ><img src="assets/food.png"></ion-col>
+              <ion-col size="6" style="align-self:center;color:black;font-size: 1rem;">Next Meal</ion-col>
+              <ion-col size="2.5" style="align-self: center;">
+                <ion-button fill="clear" color="dark" (click)="onAddMeal('1')">
+                  <ion-icon name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid #ddd;">
+              <ion-col padding-start style="color:#000;text-transform: capitalize;"><ion-icon style="margin: -2px;" name="restaurant"></ion-icon> {{a.name?a.name:a.mealName}}</ion-col>
+              <ion-col padding-end style="color:#000;" text-end><ion-icon style="margin: -2px;" name="time"></ion-icon> {{a.time?a.time:a.mealTimeFrom}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col padding-end padding-start *ngIf="a.value">{{a.value}}</ion-col>
+              <ion-col  padding-end padding-start *ngIf="!a.value">
+                <div *ngFor="let b of a.foodItems">
+                 <span><ion-icon name="arrow-dropright" color="success"></ion-icon>{{b.qty1}} {{b.food1}} </span>
+                 <span style="float: right;">{{b.foodCal1}}Kcal</span>
+                 <p style="text-align: center;color: #708C3A;" *ngIf="b.food2" > OR</p>
+                 <span>
+                   <ion-icon name="" color="success"></ion-icon> {{b.qty2}} {{b.food2}}
+                 </span> 
+                 <span style="float: right;" *ngIf="b.foodCal2">
+                   {{b.foodCal2}}Kcal
+                 </span>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row>
+      <ion-row>
+        <ion-card class="dashboard-card">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3.5" ><img src="assets/water.png"></ion-col>
+              <ion-col size="6" style="align-self:center;color:black;font-size: 1rem;">Water Intake</ion-col>
+              <ion-col size="2.5" style="align-self: center;">
+                <ion-button fill="clear" color="dark" (click)="onAddMeal('2')">
+                  <ion-icon name="add" ></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid #ddd;">
+              <ion-col padding-start style="color:#000;"><ion-icon style="margin: -2px;" src="assets/glass.svg"></ion-icon> <!-- Daily Intake -->
+               Today’s Intake
+           </ion-col>
+              <ion-col padding-end style="color:#000;" text-end><ion-icon style="margin: -2px;" src="assets/glass.svg"></ion-icon> <!-- Daily Intake -->
+               Goal Intake
+              </ion-col>
+            </ion-row>
+            <ion-row padding-bottom>
+              <ion-col padding-start style="color:#000;"> {{water_intake?.ideal_water}}</ion-col>
+              <ion-col padding-end style="color:#000;" text-end>{{water_intake?.goal}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row>
+      <ion-row>
+        <ion-card class="dashboard-card">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3.5" ><img src="assets/weight-tracker.png"></ion-col>
+              <ion-col size="6" style="align-self:center;color:black;font-size: 1rem;">Weight Tracker</ion-col>
+              <ion-col size="2.5" style="align-self: center;">
+                <ion-button fill="clear" color="dark" (click)="onAddMeal('3')">
+                  <ion-icon name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid #ddd;">
+              <ion-col padding-start style="color:#000;"><ion-icon style="margin: -2px;" src="assets/weight.svg"></ion-icon> Current Weight </ion-col>
+              <ion-col padding-end style="color:#000;" text-end><ion-icon style="margin: -2px;" src="assets/weight.svg"></ion-icon> 
+              Initial Weight</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col padding-start style="color:#000;">{{weight_tracker?.current}} KG</ion-col>
+              <ion-col padding-end style="color:#000;" text-end>
+              {{weight_tracker?.initial}} KG</ion-col>
+            </ion-row>
+            <ion-row style="border-top: 1px solid #ddd;font-size: 0.7rem">
+              <ion-col text-center style="color:#000;">Total Weight {{weight_tracker?.current>weight_tracker?.initial?'Gain':'Loss'}} : {{average}}KG</ion-col>
+            </ion-row>
+            <ion-row style="">
+              <ion-col padding-start style="color:#000;"></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row>
+      <ion-row>
+        <ion-card class="dashboard-card">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3.5" ><img src="assets/doctor.png"></ion-col>
+              <ion-col size="6" style="align-self:center;color:black;font-size: 1rem;">Next Appointment</ion-col>
+              <ion-col size="2.5" style="align-self: center;">
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-top: 1px solid #ddd;font-size: 0.9rem">
+              <ion-col padding-start style="color:#000;" *ngIf="appointment?.date">Date: {{appointment?.date}}</ion-col>
+              <ion-col padding-end style="color:#000;" *ngIf="appointment?.time">Time: {{appointment?.time}}</ion-col>
+            </ion-row>
+            <ion-row style="border-top: 1px solid #ddd;font-size: 0.9rem">
+              <ion-col padding-start style="color:#000;" *ngIf="appointment?.doctor_name">Dietitian: {{appointment?.doctor_name}}</ion-col>
+            </ion-row>
+            <ion-row style="border-top: 1px solid #ddd;font-size: 0.9rem"
+            *ngIf="appointment?.reschedule_visit_request==1">
+              <ion-col padding-start style="color:#000;" *ngIf="appointment?.reschedule_status==0">Status: Pending
+              </ion-col>
+                <ion-col padding-start style="color:#000;" *ngIf="appointment_length==0">Status: No appointment
+              </ion-col>
+                <ion-col padding-start style="color:#000;" *ngIf="appointment?.reschedule_status==1">Status: Confirmed
+              </ion-col>
+               <ion-col padding-start style="color:#000;" *ngIf="appointment?.reschedule_status==2">Status: Cancelled
+              </ion-col>
+            </ion-row>
+
+              <ion-row style="border-top: 1px solid #ddd;font-size: 0.9rem"
+            *ngIf="appointment?.reschedule_visit_request!=1">
+              <ion-col padding-start style="color:#000;" *ngIf="appointment?.status==0">Status: Pending
+              </ion-col>
+                <ion-col padding-start style="color:#000;" *ngIf="appointment_length==0">Status: No appointment
+              </ion-col>
+                <ion-col padding-start style="color:#000;" *ngIf="appointment?.status==1">Status: Confirmed
+              </ion-col>
+               <ion-col padding-start style="color:#000;" *ngIf="appointment?.status==2">Status: Cancelled
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-top: 1px solid #ddd;">
+              <ion-col padding-start style="color:#000;"></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row>
+    </ion-grid>
+</ion-content>

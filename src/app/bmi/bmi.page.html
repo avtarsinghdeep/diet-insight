@@ -1,0 +1,82 @@
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start" no-padding no-margin>
+         <ion-menu-button no-padding no-margin></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title margin-right-title capitilize" text-capitalize>BMI Calculator</ion-title>
+   </ion-toolbar>
+</ion-header>
+<ion-content padding class="align-center" style="background-color: #fff">
+   <div class="main">
+      <p no-margin style="width: 100%;float: left;font-size: 1.5rem;color: #708C3A;margin-top: 10px;">Body Mass Index (BMI)</p>
+      <p no-margin style="width: 100%;float: left;font-size: 1.1rem;color: #000;margin-top: 15px; margin-bottom: 15px;">A measure of body fat</p>
+   </div>
+   <hr class="hr">
+   <div class="input-div">
+      <ion-label no-margin no-padding class="label-name"> Weight</ion-label>
+      <input (input)="bmi='00.0'" placeholder="{{weight_unit}}" type="number" maxlength="5" class="label-input" [(ngModel)]="kg" />
+      <div (click)="presentAlertRadio()" no-margin no-padding lines="none" style="margin-left:0px;min-height: unset;height: 30px;width: 70px;text-align: center;">
+         <ion-input class="selecter" style="max-width:unset;width: 80%;" [(ngModel)]="weight_unit" readonly ></ion-input>
+      </div>
+   </div>
+   <div class="input-div">
+      <ion-label no-margin no-padding class="label-name"> Height</ion-label>
+      <input *ngIf="height_unit=='cm'" (input)="bmi='00.0'" placeholder="{{height_unit}}" type="number" maxlength="5" class="label-input" [(ngModel)]="cm" />
+      <input *ngIf="height_unit=='ft'" (input)="bmi='00.0'" placeholder="feet" type="number" maxlength="2" class="label-input_ft1" [(ngModel)]="ft" />
+      <input *ngIf="height_unit=='ft'" (input)="bmi='00.0'" placeholder="inch" type="number" maxlength="2" class="label-input_ft2" [(ngModel)]="in" />
+      <div (click)="openSelecterHeight()" no-margin no-padding lines="none" style="margin-left:0px;min-height: unset;height: 30px;width: 70px;text-align: center;">
+         <ion-input class="selecter" style="max-width:unset;width: 80%;" [(ngModel)]="height_unit" readonly></ion-input>	
+      </div>
+   </div>
+   <div class="main">
+   	<ion-button [disabled]="check_enable()" style="font-size: 1.0rem;height: 45px;margin-top: 10px;background: #708C3A;margin-bottom: 15px;border-radius: 5px;color: #fff;width: 40%" (click)="check()">Check BMI</ion-button>
+   </div>
+   <hr class="hr">
+   <p class="date-header">For Today i.e {{getDay()}}</p>
+   <p no-margin class="bmi-label">Your BMI</p>
+   <p no-margin class="bmi-result">{{bmi}}</p>
+   <div *ngIf="bmi!='00.0'">
+      <table style="width: 100%;text-align: center;float: left;position: relative;margin-top: 20px;">
+         <tr class="middel-label">
+            <td>Category</td>
+            <td>BMI Range</td>
+            <!-- <td>BMI Prime</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(1,bmi)">
+            <td>Severely underweight</td>
+            <td class="qty">Less Then 16.5</td>
+            <!-- <td>Less Then 0.66</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(2,bmi)">
+            <td>Underweight</td>
+            <td class="qty">From 16.5 to 18.5</td>
+            <!-- <td>From 0.66 to 0.74</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(3,bmi)">
+            <td>Normal</td>
+            <td class="qty">From 18.5 to 25</td>
+            <!-- <td>From 0.74 to 1.0</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(4,bmi)">
+            <td>Overweight</td>
+            <td class="qty">From 25 to 30</td>
+            <!-- <td>From 1.0 to 1.2</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(5,bmi)">
+            <td>Obese Class I</td>
+            <td class="qty">From 30 to 35</td>
+            <!-- <td>From 1.2 to 1.4</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(6,bmi)">
+            <td>Obese Class II</td>
+            <td class="qty">From 35 to 40</td>
+            <!-- <td>From 1.4 to 1.6</td> -->
+         </tr>
+         <tr [style.font-weight]="check_border(7,bmi)">
+            <td>Obese Class III</td>
+            <td class="qty">Over 40</td>
+            <!-- <td>Over 1.6</td> -->
+         </tr>
+      </table>
+   </div>
+</ion-content>

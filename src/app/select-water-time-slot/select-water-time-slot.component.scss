@@ -1,0 +1,78 @@
+.item-radio.item-md ion-label {
+		margin-left: 0;
+	}
+	ion-label {
+		margin: 0;
+		display: block;
+		overflow: visible;
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		font-size: 12px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.item-md .radio-md[item-left], .item-md .radio-md[item-start], .item-ios .radio-ios[item-left], .item-ios .radio-ios[item-start]  {
+		 margin: 2px; 
+	}
+	.item-md, .item-ios {
+		padding-right: 0;
+		position: relative;
+		font-size: 1.6rem;
+		font-weight: normal;
+		text-transform: none;
+		color: #000;
+		background-color: #fff;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		-webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+		transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	[col-1] {
+		padding-top: 12px;
+	}
+	.col-arrow.col {
+		width: 10%;
+		text-align: center;
+		line-height: 38px;
+	}
+	.col-radio.col {
+		 padding: 0px; 
+		position: relative;
+		width: 100%;
+		margin: 0;
+		min-height: 1px;
+		-webkit-flex-basis: 0;
+		-ms-flex-preferred-size: 0;
+		flex-basis: 0;
+		-webkit-box-flex: 1;
+		-webkit-flex-grow: 1;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		max-width: 100%;
+	}
+	.radio-md .radio-checked, .radio-ios .radio-checked  {
+		border-color: #787878;
+	}
+	.login-input-gender{
+		height: 30px!important;
+		min-height: unset;
+		border:none;
+		background-color: transparent;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		font-size: 1.1rem;
+	}
+	.login-input-gender-option{
+		float: left;
+		padding-right: 10px;
+		padding-left: 15px;
+		height: 38px!important;
+		min-height: unset;
+		border:none;
+		background-color: transparent;
+		border-radius: 10px;
+		font-size: 1.1rem;
+	}

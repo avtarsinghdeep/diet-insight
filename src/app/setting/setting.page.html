@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+       <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center-title">Push Notifications</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>WATER INTAKE</ion-label>
+    <ion-toggle [(ngModel)]="water_intake" mode="ios" color="tertiary" (ionChange)="change(water_intake,'water_intake')"></ion-toggle>
+  </ion-item>
+</ion-content>

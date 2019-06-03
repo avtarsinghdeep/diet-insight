@@ -1,0 +1,99 @@
+
+
+<ion-content class="bg-signup-contant">
+   <div class="bg-signup-bg">
+      <!-- <div class="top-header"><span class="top-header-text">Register</span></div> -->
+      <div style="width: 100%;" class="bg-signup">
+         <img src="/assets/logo.png" width="60%" style="" class="logo" style="">
+         <form [formGroup]="signup_form">
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="md-person" slot="start"></ion-icon>
+               <ion-input formControlName="firstName" type="text" placeholder="First Name" autocapitalize=on [(ngModel)]="user.firstName" ></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="signup_form.controls['firstName'].valid || !signup_form.controls['firstName'].touched">
+               Please enter your First Name
+            </div>
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="md-person" slot="start"></ion-icon>
+               <ion-input formControlName="lastName" type="text" placeholder="Last Name" autocapitalize=on [(ngModel)]="user.lastName"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="signup_form.controls['lastName'].valid || !signup_form.controls['lastName'].touched">
+               Please enter your Last Name
+            </div>
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="md-mail" slot="start"></ion-icon>
+               <ion-input formControlName="email" type="email" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="signup_form.controls['email'].valid || !signup_form.controls['email'].touched">
+               Please enter your valid Email Address
+            </div>
+            <div style="    float: left;
+               margin: 10px 10%;
+               width: 80%;">
+               <span >
+                  <ion-item lines="none" style="width: 40%;
+                     float: left;
+                     border-radius: 25px;
+                     border: 1px;
+                     overflow: hidden;
+                     border: 3px solid rgba(0, 0, 0, 0.15);" (click)="SelectCountryCode()">
+                     <!-- <div style="display: inherit;" (click)="SelectCountryCode()"> -->
+                     <ion-icon [src]="img" color="success" class="margin-right" name="md-phone-portrait" slot="start"></ion-icon>
+                     <ion-label class="select-country-code" style="color: #777777;">{{user.country_code}}
+                     </ion-label>
+                     <!-- </div> -->
+                  </ion-item>
+               </span>
+               <span >
+                  <ion-item lines="none" style="width: 58%;
+                     float: left;
+                     border: 3px solid rgba(0, 0, 0, 0.15);
+                     border-radius: 25px;
+                     /* width: 80%; */
+                     overflow: hidden;
+                     margin-left: 5px;" >
+                     <ion-input formControlName="phoneNo" type="tel" placeholder="Mobile Number" [(ngModel)]="user.phoneNo" ></ion-input>
+                  </ion-item>
+                  <div class="invalid-input" [hidden]="signup_form.controls['phoneNo'].valid || !signup_form.controls['phoneNo'].touched">
+                     Please enter valid Phone No.
+                  </div>
+               </span>
+            </div>
+            <!-- 		<ion-item lines="none" class="border-class" >
+               <div style="display: inherit;" (click)="SelectCountryCode()">
+               		<ion-icon [src]="img" color="success" class="margin-right" name="md-phone-portrait" slot="start"></ion-icon>
+               		<ion-label class="select-country-code" style="color: #777777;">{{user.country_code}}
+               		</ion-label>
+               </div>
+               <ion-input formControlName="phoneNo" type="number" placeholder="Mobile Number" [(ngModel)]="user.phoneNo" ></ion-input>
+               </ion-item>
+               <div class="invalid-input" [hidden]="signup_form.controls['phoneNo'].valid || !signup_form.controls['phoneNo'].touched">
+                   Please enter valid Phone No.
+                 </div> -->
+            <!--  <div class="invalid-input" [hidden]="signup_form.controls['country_code'].valid || !signup_form.controls['country_code'].touched">
+               Please enter valid Country code.
+               </div> -->
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="ios-key" slot="start" style="transform: rotate(-90deg);"></ion-icon>
+               <ion-input formControlName="password" type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="signup_form.controls['password'].valid || !signup_form.controls['password'].touched">
+               Please enter more than 7 characters
+            </div>
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="ios-key" slot="start" style="transform: rotate(-90deg);"></ion-icon>
+               <ion-input formControlName="confirmPassword" type="password" placeholder="Confirm Password" [(ngModel)]="user.confirmPassword"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="signup_form.value.confirmPassword==signup_form.value.password&&(signup_form.controls['confirmPassword'].valid || !signup_form.controls['confirmPassword'].touched)">
+               Password doesn't match
+            </div>
+         </form>
+        <!--  <ion-button class="signup-button" shape="round" color="success" (click)="SelectCountryCode()">SelectCountryCode</ion-button> -->
+           <ion-button class="signup-button" shape="round" color="success" (click)="signup()"> Sign Up</ion-button>
+         <div class="login-text">
+            If you have an account?<span class="login-button" (click)='login()'> Login</span>
+         </div>
+      </div>
+   </div>
+</ion-content>
+

@@ -1,0 +1,24 @@
+.div__h6--font{
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.div__row--display{
+    display: flex;
+
+    .row__col--display{
+        align-self: center;
+        padding-left: 0px;
+        color: #555;
+        span{
+            font-size: 13px;
+            padding: 4px 7px;
+            background-color: #eae6ea;
+        }
+    }
+}
+
+P{
+    font-size: 12px;
+    padding-top: 8px;
+}

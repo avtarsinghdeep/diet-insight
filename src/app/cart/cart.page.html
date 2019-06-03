@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+  	<ion-buttons slot="start" no-padding no-margin>
+      <ion-back-button no-padding no-margin></ion-back-button>
+    </ion-buttons>
+    <ion-title class="center-title" text-capitalize>Selected Package</ion-title>
+     <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="light" style="text-align: center">
+	<ion-card style="background: #fff">
+		<ion-grid no-padding>
+			<ion-row padding style="border-bottom:1px solid #ddd">
+				<ion-col no-padding text-left style="font-weight:bold;color:#000">My Package</ion-col>
+				<ion-col no-padding text-right>{{date}}</ion-col>
+			</ion-row>
+			<ion-row padding-top padding-start padding-end>
+				<ion-col no-padding text-left style="color:#000">Package</ion-col>
+				<ion-col no-padding text-right>{{dataService.data.service_name}}</ion-col>
+			</ion-row>
+			<ion-row padding-top padding-start padding-end>
+				<ion-col no-padding text-left style="color:#000">Duration</ion-col>
+				<ion-col no-padding text-right>{{dataService.data.variation[dataService.data.variation_index].duration_no}} {{dataService.data.variation[dataService.data.variation_index].duration_type}}</ion-col>
+			</ion-row>
+			<ion-row padding>
+				<ion-col no-padding text-left style="color:#000">Price</ion-col>
+				<ion-col no-padding text-right>₹{{dataService.data.variation[dataService.data.variation_index].duration_price_inr}}</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+	<ion-button margin-top (click)="submit()" shape="round" style="margin: 0 auto">Pay Now</ion-button>
+</ion-content>

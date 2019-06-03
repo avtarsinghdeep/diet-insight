@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+  	<ion-buttons slot="start">
+      <ion-back-button no-margin no-padding></ion-back-button>
+    </ion-buttons>
+    <ion-title class="center-title">Medical Profile</ion-title>
+    <ion-buttons slot="end">
+    	<ion-button (click)="skip()">Skip
+	      <ion-icon slot="icon-only" name="share-alt"></ion-icon>
+	    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div class="bg-login-bg">
+		<div style="width: 100%;" class="bg-login">
+			<div style="background: #fff;border-radius:10px;width: 100%;padding:10px;" >
+				<form [formGroup]="medical_profile">
+					<ion-item lines="none" no-padding style="font-size: 1.2rem;">
+						<ion-label>Relationship with</ion-label>
+					</ion-item>
+					<ion-item lines="none" no-padding>
+						<ion-label>Smoking</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter" >
+					    <ion-label style="color:#777">Smoking</ion-label>
+					    <ion-select formControlName="smoking_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="I never smoked">I never smoked</ion-select-option>
+					      <ion-select-option value="I have quit smoking">I have quit smoking</ion-select-option>
+					      <ion-select-option value="I smoke occasionally">I smoke occasionally</ion-select-option>
+					      <ion-select-option value="I smoke regularly">I smoke regularly</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['smoking_relation'].valid || !medical_profile.controls['smoking_relation'].touched">
+					    Please select 
+					</div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Alcohol</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter" >
+					    <ion-label style="color:#777">Alcohol</ion-label>
+					    <ion-select formControlName="alcohol_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="I never drink">I never drink</ion-select-option>
+					      <ion-select-option value="I have quit drinking">I have quit drinking</ion-select-option>
+					      <ion-select-option value="I drink occasionally">I drink occasionally</ion-select-option>
+					      <ion-select-option value="I drink regularly">I drink regularly</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['alcohol_relation'].valid || !medical_profile.controls['alcohol_relation'].touched">
+					    Please select 
+					</div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Tobacco</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter" >
+					    <ion-label style="color:#777">Tobacco</ion-label>
+					    <ion-select formControlName="tobaco_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="I never chewed tobacco">I never chewed tobacco</ion-select-option>
+					      <ion-select-option value="I have quit chewing tobacco">I have quit chewing tobacco</ion-select-option>
+					      <ion-select-option value="I chew tobacco occasionally">I chew tobacco occasionally</ion-select-option>
+					      <ion-select-option value="I chew tobacco regularly">I chew tobacco regularly</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['tobaco_relation'].valid || !medical_profile.controls['tobaco_relation'].touched">
+					    Please select 
+					</div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Aerated Drinks</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+					    <ion-label style="color:#777">Aerated Drinks</ion-label>
+					    <ion-select formControlName="aerated_drink_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="I never drink aerated drinks">I never drink aerated drinks</ion-select-option>
+					      <ion-select-option value="I have quit drinking aerated drinks">I have quit drinking aerated drinks</ion-select-option>
+					      <ion-select-option value="I drink aerated drinks occasionally ">I drink aerated drinks occasionally </ion-select-option>
+					      <ion-select-option value="I drink aerated drinks regularly">I drink aerated drinks regularly</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['aerated_drink_relation'].valid || !medical_profile.controls['aerated_drink_relation'].touched">
+					    Please select 
+					</div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Nature of work</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+					    <ion-label style="color:#777">Select Nature of work</ion-label>
+					    <ion-select formControlName="nature_of_work" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="Sedentary">Sedentary</ion-select-option>
+					      <ion-select-option value="Moderately Active">Moderately Active</ion-select-option>
+					      <ion-select-option value="Very Active">Very Active</ion-select-option>
+					      <ion-select-option value="Extremely Active">Extremely Active</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['nature_of_work'].valid || !medical_profile.controls['nature_of_work'].touched">
+					    Please select 
+					</div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Stress Level</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+					    <ion-label style="color:#777">Select Stress Level</ion-label>
+					    <ion-select formControlName="stress_level" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="No Stress">No Stress</ion-select-option>
+					      <ion-select-option value="Low Stress">Low Stress</ion-select-option>
+					      <ion-select-option value="Moderate Stress">Moderate Stress</ion-select-option>
+					      <ion-select-option value="High Stress">High Stress</ion-select-option>
+					      <ion-select-option value="Very High Stress">Very High Stress</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['stress_level'].valid || !medical_profile.controls['stress_level'].touched">
+					    Please select 
+					</div>
+				</form>
+			</div>
+			<ion-button class="submit-button" shape="round" (click)="submit()" color="success">Submit</ion-button>
+		</div>
+	</div>
+</ion-content>

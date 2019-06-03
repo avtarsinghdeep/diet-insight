@@ -1,0 +1,61 @@
+<!-- <ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start" no-padding no-margin>
+         <ion-back-button no-padding no-margin></ion-back-button>
+      </ion-buttons>
+        <ion-title class="center-title">Notifications</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="info()" class="header-buttons">
+            <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+    <ion-back-button no-padding no-margin></ion-back-button>
+    </ion-buttons>
+     <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center-title">Notifications</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button (click)="presentAlertConfirm()" class="header-buttons">
+      <ion-icon name="trash" slot="icon-only" style="font-size: 28px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item class="diet-plan-list-grid" *ngFor="let notification of notifications" (click)="typeClick(notification.type)">
+    <ion-label text-wrap>
+   <h3>{{notification.title}}
+    <span style="float: right;font-size: 9px;">
+    {{notification.created_at}}
+  </span></h3>
+  
+   <p>
+     {{notification.message}}
+   </p>
+    </ion-label>
+  </ion-item>
+   
+<!--         <ion-grid class="diet-plan-list-grid" *ngFor="let notification of notifications" (click)="typeClick(notification.type)">
+          <ion-card no-margin>
+            <ion-row class="diet-plan-list-row border-bottom">
+              <ion-col size="12"><span style="color: #131212;font-size: 0.9rem;">{{notification.title}}</span></ion-col>
+            </ion-row> 
+            <ion-row class="diet-plan-list-row border-bottom">
+                <ion-col size="8"><span style="    color: rgb(175, 173, 173);font-size: 0.8rem;">{{notification.message}}</span></ion-col>
+                <ion-col size="4"><span style="float: right;color: rgb(58, 57, 57);font-size: 0.75rem;">{{notification.created_at}}</span></ion-col>
+            </ion-row> 
+          </ion-card>     
+        </ion-grid>   -->
+  
+
+</ion-content>

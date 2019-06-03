@@ -1,0 +1,65 @@
+.chatbox{
+	border: 1px solid #ddd;
+    border-radius: 20px;
+    padding-left: 15px!important;
+    font-size: 0.8rem;
+}
+.chat-bubble{
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 0.7rem;
+	max-width: 70%;
+	position: relative;
+}
+.chat-bubble-left{
+	background: #fff;
+	color: #000;
+	float: left;
+	text-align: left;
+    font-size: 0.9rem;
+}
+.chat-bubble-right{
+	background: #708C3A;
+	color: #fff;
+	float: right;
+	font-size: 0.9rem;
+	text-align: left;
+}
+.chat-time-right{
+	font-size: 0.5rem;
+	color: #aaa;
+	position: absolute;
+    left: -72px;
+    top: 40%;
+    padding: 0;
+    margin: 0;
+}
+.chat-time-left{
+	font-size: 0.5rem;
+	color: #aaa;
+	position: absolute;
+    right: -72px;
+    top: 40%;
+    padding: 0;
+    margin: 0;
+}
+.chat-day{
+	color: white;
+    padding: 2px;
+    border-radius: 10px;
+    background: #708c3a;
+    width: 50px;
+    margin: auto;
+    font-size: 0.7rem;
+}
+.admin-grid-chat{
+	    height: 240px;
+}
+.attachment-name{
+width: 100%;
+font-size: 0.75rem;
+text-align: center;
+padding-bottom: 2px;
+display: inline;
+padding-right: 10px;
+}

@@ -1,0 +1,81 @@
+
+
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+         <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">Diet Plan</ion-title>
+      <ion-buttons slot="end">
+         <ion-button class="header-buttons">
+            <ion-icon src="assets/alert.svg" slot="icon-only" style="display: none;"></ion-icon>
+         </ion-button>
+         <ion-button (click)="info()" class="header-buttons">
+            <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+         </ion-button>
+      </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content padding color="light" text-center>
+  <!--  <ion-label >Diet Plan List</ion-label> -->
+   <ion-card no-margin margin-top margin-bottom>
+      <ion-grid class="diet-plan-list-grid" *ngFor="let result of dietchart;let i=index">
+         <ion-row class="diet-plan-list-row border-bottom" (click)="selectedItems(i)">
+            <ion-col size="1">
+               <ion-icon src="assets/diet.svg" style="font-size:1.2rem"></ion-icon>
+            </ion-col>
+            <ion-col size="10" style="align-self:center" text-start>
+            <!-- {{result.heading}} -->
+             ({{result.date}}) {{result.showDay}}</ion-col>
+            <ion-col style="align-self: center;" size="1" *ngIf="!result.status">
+            <ion-icon name="add"></ion-icon>
+            </ion-col>
+            <ion-col style="align-self: center;" size="1"  *ngIf="result.status">
+            <ion-icon name="remove" color="success"></ion-icon>
+            </ion-col>
+         </ion-row>
+         <ion-row class="disc-pan-diet-plan" *ngFor="let meals of result.meal">
+            <div *ngIf="result.status && result.type==1" style="width: 100%;border-bottom: 1px solid #e0dfdf;">
+               <ion-col size="12" style="padding: 0px;">
+                  <ion-row>
+                     <ion-col size="8" text-start style="color: rgb(43, 43, 44);text-transform: capitalize;">{{meals.name}}</ion-col>
+                     <ion-col size="4" text-end style="font-size: 0.8rem;">{{meals.time}}</ion-col>
+                  </ion-row>
+                  <ion-row>
+                     <ion-col size="12" text-start class="diet-plan-disc">
+                        <span [innerHtml]="valueReplace(meals.value)"></span>
+                     </ion-col>
+                  </ion-row>
+               </ion-col>
+            </div>
+            <div *ngIf="result.status && result.type==2" style="width: 100%;border-bottom: 1px solid #e0dfdf;">
+               <ion-col size="12">
+                  <ion-row>
+                     <ion-col size="8" text-start style="color: rgb(43, 43, 44);text-transform: capitalize;">{{meals.mealName}}</ion-col>
+                     <ion-col size="4" text-end style="font-size: 0.8rem;">{{meals.mealTimeFrom}}</ion-col>
+                  </ion-row>
+                  <ion-row  *ngFor="let food of meals.foodItems">
+                     <ion-col size="1">
+                        <span>
+                           <ion-icon name="arrow-dropright" color="success"></ion-icon>
+                        </span>
+                     </ion-col>
+                     <ion-col size="7" text-start class="diet-plan-disc"> {{food.qty1}} {{food.food1}}</ion-col>
+                     <ion-col size="4" text-end class="diet-plan-disc">
+                        {{food.foodCal1}}{{food.foodCal1?'Kcal':''}}
+                     </ion-col>
+                     <div style="display: block;width: 100%;" *ngIf="food.food2">
+                        <p style="text-align: center;color: darkgreen;">OR</p>
+                     </div>
+                     <ion-col size="1">
+                     </ion-col>
+                     <ion-col size="7" text-start class="diet-plan-disc">{{food.qty2}} {{food.food2}}</ion-col>
+                     <ion-col size="4" text-end class="diet-plan-disc">{{food.foodCal2}}{{food.foodCal2?'Kcal':''}}</ion-col>
+                  </ion-row>
+               </ion-col>
+            </div>
+         </ion-row>
+      </ion-grid>
+   </ion-card>
+</ion-content>
+

@@ -1,0 +1,53 @@
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start" no-padding no-margin>
+         <ion-back-button no-padding no-margin></ion-back-button>
+      </ion-buttons>
+      <ion-title class="center-title margin-right-title capitilize" text-capitalize>{{recipes?.title}}</ion-title>
+        <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content>
+   <div>
+      <img src="{{recipes?.image}}" class="recipe_img">
+   </div>
+   <div class="p_10">
+      <div>
+         <ion-card-title class="recipe_title capitilize" style="text-align: right;">Serving: {{recipes?.serving_size}}</ion-card-title>
+      </div>
+      <div>
+         <ion-card-title class="recipe_title capitilize">ingredients</ion-card-title>
+      </div>
+      <table style="width:100%">
+         <tr>
+            <th class="capitilize">food item</th>
+            <th class="capitilize">quantity</th>
+         </tr>
+         <tr *ngFor="let a of JsonParse(recipes.ingredients)">
+            <td class="capitilize">{{a.food_item}}</td>
+            <td class="capitilize">{{a.quantity}}</td>
+         </tr>
+      </table>
+      <div>
+         <ion-card-title class="recipe_title capitilize">procedure</ion-card-title>
+         <p [innerHtml]="recipes?.recipe_procedure" class="procedure"></p>
+      </div>
+      <div>
+         <ion-card-title class="recipe_title capitilize">nutritional</ion-card-title>
+      </div>
+      <table style="width:100%">
+         <tr>
+            <th class="capitilize">nutrition</th>
+            <th class="capitilize">value</th>
+         </tr>
+         <tr *ngFor="let a of JsonParse(recipes.nutritional_value)">
+            <td class="capitilize">{{a.nutrition}}</td>
+            <td class="capitilize">{{a.nutrition_val}}</td>
+         </tr>
+      </table>
+   </div>
+</ion-content>

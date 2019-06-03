@@ -1,0 +1,34 @@
+
+<div style="width: 100%;background: url(/assets/icon/4.png);background-size: cover;background-position: center;position: relative;min-height:300px;">
+<div style="text-align: center;display: flex;position: absolute;width: 100%;height: 120px;top: 0px;left: 0;">
+   <p style="display: inline-block;align-items: center;margin: auto;color: #fff;font-size: 20px;text-transform: capitalize;">
+      {{title}}
+   </p>
+</div>
+<div style="position: absolute;background: #fff;width: 100%;bottom:0px;left: 0;height:120px">
+   <div style="min-height: 100px;height: 100px;overflow-x: scroll;">
+      <p style="font-size: 14px;text-align: justify;padding: 10px;text-transform: capitalize;">
+         {{msg}}
+      </p>
+   </div>
+</div>
+</div>
+ <ion-footer style="width: 100%;
+    float: left;
+    height: 50px;" color="success">
+      <div style="width: 100%;position: absolute;bottom: 10px;">
+      <div class="buttons-item" lines="none" no-margin no-padding style="text-align: center;margin-top: 8px;">
+        <span style="width: 48%;float: left;">
+            <ion-button no-padding no-margin style="margin:0 2px;width: 85%;height: 2.0rem;border-radius:5px;background:linear-gradient(45deg,#34B552,#04B5A8);text-transform: capitalize;" (click)="onCancel()">
+            CANCEL
+         </ion-button>
+        </span>
+        <span style="width: 48%;float: right;"> 
+            <ion-button no-padding no-margin style="margin:0 2px;width: 80px;width: 85%;height: 2.0rem;border-radius:5px;background:linear-gradient(45deg,#34B552,#04B5A8);text-transform: capitalize;" (click)="onSubmit()">
+            OK
+         </ion-button>
+        </span>
+      </div>
+   </div>
+   </ion-footer>
+

@@ -1,0 +1,63 @@
+<ion-header *ngIf="dataService.pageType=='sidemenu'">
+  <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+      <!-- <ion-back-button no-margin no-padding></ion-back-button> -->
+       <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+     <!-- margin-right-title -->
+    <ion-title class="center-title">Choose your program</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header *ngIf="dataService.pageType!='sidemenu'">
+  <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+      <!-- <ion-back-button no-margin no-padding></ion-back-button> -->
+    </ion-buttons>
+     <!-- margin-right-title -->
+    <ion-title class="center-title">Choose your program</ion-title>
+     <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center">
+    <div class="service-tag-div">
+        <div class="service-div">
+            To see the details, please select a <br>program based on your health goal.
+        </div>
+    </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col (click)="openDetail(service)" size="6" style="padding: 5px;" *ngFor="let service of services">
+                <div class="service-div">
+                    <img [src]="service.image" class="service-img">
+                    <div class="service-name">
+                        {{service.service_name}}
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer class="service-footer">
+    <div class="service-need">
+        <a>Need help?</a>
+    </div>
+    <div class="service-btn-div">
+        <span class="pull-left" (click)="onCall()">
+            <img src="assets/call.png">
+        </span>
+        <span class="pull-right" (click)="onChat('1')">
+            <img src="assets/chat.png">
+        </span>
+    </div>
+</ion-footer>

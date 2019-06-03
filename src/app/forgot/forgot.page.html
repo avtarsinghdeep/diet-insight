@@ -1,0 +1,41 @@
+<ion-content class="bg-login-contant">
+	<div class="bg-login-bg">
+		<!-- <div class="top-header"><span class="top-header-text">Forgot Password</span></div> -->
+		<div style="width: 100%;" class="bg-login">
+			<img src="/assets/logo.png" width="60%" style="" class="logo" style="">
+			<div class="signup-text text-title">
+				Enter your registered email id <br />to recover the password
+			</div>
+			<form [formGroup]="forgot_form">
+				<ion-item lines="none" class="border-class">
+					<ion-icon color="success" class="margin-right" name="md-mail" slot="start"></ion-icon>
+					<ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+				</ion-item>
+				<div class="invalid-input" [hidden]="forgot_form.controls['email'].valid || !forgot_form.controls['email'].touched">
+			      Please check your Email Address
+			    </div>
+			    <div class="form__or-div">
+			    	<div class="form__or">OR</div>
+			    </div>
+			    <ion-item lines="none" class="border-class">
+					<ion-icon [src]="flag" color="success" class="margin-right" name="md-phone-portrait" slot="start"></ion-icon>
+					<ion-select (ionChange)="checkFlag()" class="select-country-code" [interfaceOptions]="customOptions" interface="alert" formControlName="country_code" type="number" placeholder="+91">
+						<ion-select-option value="{{code.dial_code}}" *ngFor="let code of sort()">{{code.dial_code}}</ion-select-option>
+					</ion-select>
+					<ion-input formControlName="phoneNo" type="number" placeholder="Mobile Number"></ion-input>
+				</ion-item>
+				<div class="invalid-input" [hidden]="forgot_form.controls['phoneNo'].valid || !forgot_form.controls['phoneNo'].touched">
+			      Please enter valid Phone No.
+			    </div>
+			    <div class="invalid-input" [hidden]="forgot_form.controls['country_code'].valid || !forgot_form.controls['country_code'].touched">
+			      Please enter valid Country code.
+			    </div>
+			</form>
+			<ion-button class="login-button" shape="round" color="success" (click)='forgot()'>Recover My Password</ion-button>
+
+			<div class="signup-text" >
+				Don't have an account?<span class="signup-button" (click)="signup()">  Sign Up</span>
+			</div>
+		</div>
+	</div>
+</ion-content>

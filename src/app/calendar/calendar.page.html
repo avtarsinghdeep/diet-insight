@@ -1,0 +1,25 @@
+<div class="calender__mainbody">
+  <div class="calender__calender">
+    <div class="calender__calender-header">
+      <ion-icon (click)="previousMonth()" class="calender__left-arrow" name="ios-arrow-back"></ion-icon>
+        <ion-label class="calender__calender-header-text">
+          {{month[selectedMonth]}} {{selectedYear}}
+        </ion-label> 
+      <ion-icon (click)="nextMonth()" class="calender__right-arrow" name="ios-arrow-forward"></ion-icon>
+    </div>
+    <div class="calender__calender-sebheader">
+      <ion-label *ngFor="let day of days" class="calender__calender-subheader-text"><span>{{day}}</span></ion-label> 
+    </div>
+    <div class="calender__calender-content">
+      <ion-label class="calender__calender-content-text" id="{{b}}datediv" (click)="pickDate(b)" *ngFor="let b of box;let i = index ">
+        <span>{{b}}</span>
+      </ion-label>
+    </div>
+  </div>
+</div>
+<!--   <br>year=={{selectedYear}} {{leapornot}}
+  <br>total days in year=={{totaldays}}
+  <br>month=={{selectedMonth+1}}
+  <br>days in month=={{daysinmonth}}
+  <br>{{oddDays}}
+  <br>1st {{month[selectedMonth]}} {{days[monthfirstday]}} -->

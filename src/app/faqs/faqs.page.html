@@ -1,0 +1,36 @@
+
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+         <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+         <ion-menu-button no-margin no-padding></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">FAQ's</ion-title>
+       <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content>
+   <div class="container">
+      <img src="assets/faq.png" alt="Snow" style="width:100%;">
+      <div class="centered" style="font-size: 1.1rem;">Frequently Asked Questions</div>
+   </div>
+   <div class="bottom-card">
+      <ol style="padding-left: 10px;color:rgb(8, 8, 1);list-style-type:none;">
+         <li *ngFor="let q of faqs;let i=index" (click)="enable(i,q.status)" style="font-size:bold;background:#fff;width: 100%;margin-bottom: 12px;border-radius: 5px ;text-align: justify;">
+         <ion-card class="card-padding">
+          <ion-icon name={{funcicon(q.status)}}  style="float: right;font-size: 1.2rem; margin-left: 1rem;"></ion-icon>
+            <span style="font-size: 1rem;color: #232222;" [innerHtml]="q.question">
+               {{i+1}}
+               
+            </span>
+            <br>
+            <span *ngIf="q.status==0" style="font-size: 0.9rem;color:#555;" [innerHtml]="q.answer"></span>
+         </ion-card>
+         </li>
+      </ol>
+   </div>
+</ion-content>

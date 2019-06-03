@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "586036367190",
+    "firebase_url": "https://dietinsight-b459d.firebaseio.com",
+    "project_id": "dietinsight-b459d",
+    "storage_bucket": "dietinsight-b459d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586036367190:android:c8a969445dbf8410",
+        "android_client_info": {
+          "package_name": "com.synergy.dietinsight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586036367190-qpp4b92ku8q7mvvhmes40ag0o6hj30df.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.synergy.dietinsight",
+            "certificate_hash": "c6af2ec52d6dc57affea22c1d59dd8405bc3ed2f"
+          }
+        },
+        {
+          "client_id": "586036367190-0alvj9uk33fcnvb6tb28tmm124ph6cm8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.synergy.dietinsight",
+            "certificate_hash": "6511c483a889e966a144bbbcbd05d80743a80376"
+          }
+        },
+        {
+          "client_id": "586036367190-hb7pi39llqcma321vtdid7bkgurpsjeu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1is_809lhQgbYosmGv8pqiRFH7S2PvWQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586036367190-hb7pi39llqcma321vtdid7bkgurpsjeu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "586036367190-uiinp85ia0km1ahsnpennl1if677bm2r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.synergy.dietinsight"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

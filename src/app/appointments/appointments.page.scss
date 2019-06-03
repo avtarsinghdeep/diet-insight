@@ -1,0 +1,52 @@
+.border-bottom{
+	border-bottom: 1px solid #ddd;
+}
+.border-top{
+	border-top: 1px solid #ddd;
+}
+.diet-plan-list-grid{
+	background:#fff;
+	margin: 0 0 15px 0;
+}
+.diet-plan-list-row{
+	background:#fff;
+	height: 40px;
+    align-content: center;
+    font-weight: bold;
+}
+.diet-plan-disc{
+	font-size: 0.9rem
+}
+
+.header-buttons{
+	width: 35px;
+	--padding-end:0;
+	--padding-start:0;
+	margin: 0;
+}
+.center-title{
+	padding-left: 40px;
+}
+.appointment-edit-option{
+	position: absolute;
+    right: 4px;
+    background: #fafafa;
+    padding: 5px 10px;
+    box-shadow: 0 0 5px 2px #eee;
+    z-index: 10;
+    font-size: 0.5rem;
+    border-radius: 5px;
+}
+.appointment-edit-option:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 5%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-bottom-color: #fafafa;
+	border-top: 0;
+	margin-left: -8px;
+	margin-top: -8px;
+}

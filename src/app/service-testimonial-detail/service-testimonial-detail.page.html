@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    	<ion-buttons slot="start" no-padding no-margin>
+          <ion-back-button no-padding no-margin></ion-back-button>
+        </ion-buttons>
+    <ion-title style="text-align: center;">Testimonials</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img src="{{testimonial_detail?.test_image}}" style="height: 200px" > </ion-img>
+  <div padding>
+    <h6 class="div__h6--font" text-uppercase><b>{{testimonial_detail?.user_name}}</b></h6>
+        <ion-row class="div__row--display">
+          <ion-col class="row__col--display" size="6">
+            <span>{{testimonial_detail?.user_service_name}}</span>
+            <span style="color: #4d9a08;">{{testimonial_detail?.weight_loss}}</span>
+          </ion-col>
+          <ion-col size="6" no-padding class="row__col--display" style="text-align: right;">
+                <span>Fat Loss</span>
+                <span style="color: #4d9a08;">{{testimonial_detail?.fat_loss}}</span>
+          </ion-col>
+        </ion-row>
+        <p>{{testimonial_detail?.description}}</p>
+  </div>  
+</ion-content>

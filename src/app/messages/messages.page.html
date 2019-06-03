@@ -1,0 +1,77 @@
+
+
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+         <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">Chat</ion-title>
+      <ion-buttons slot="end">
+    <ion-button (click)="info()" class="header-buttons">
+    <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   </ion-toolbar>
+    <ion-toolbar>
+      <ion-item lines="none">
+         <ion-avatar slot="start">
+            <img src="assets/doctor.png">
+         </ion-avatar>
+         <ion-label>{{dataService.dietician_name?dataService.dietician_name:'My Dietitian'}}
+      <div *ngIf="user_online" style="font-size: 13px;
+    color: #c59898;">online</div>
+         </ion-label>
+      </ion-item>
+   </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <ion-grid>
+    <ion-row *ngFor="let message of messages; let last = last">
+      <ion-col *ngIf="message.sender_id!=id" [ngClass]="{'my_message': message.sender_id === sender_id, 'other_message': message.sender_id !== sender_id}" class="message">
+         <div class="chat-bubble chat-bubble-left" >
+         <!--   <span class="user_name">
+           {{ message.name }}:
+         </span> -->
+        <!--  <br> -->
+            <span *ngIf="message.type==1 || message.types==1" [innerHtml]="valueReplace(message.message)">
+           
+            </span>
+            <!-- <div class="time">{{message.created_at | date:'short'}}</div> -->
+            <span *ngIf="message.type==2  || message.types==2">
+               <img src={{message.message}} *ngIf="getImg(message.message)" (click)="openImage(message.message)" style="margin-bottom: 10px;">
+              <img src="assets/docimg.png" style="width: 25px;height: 24px;position: absolute;top: -5px;right: -2px;" (click)="openFile(message.message)" *ngIf="getdoc(message.message)">
+               <img src="assets/pdfimg.png" style="width: 25px;height: 24px;position: absolute;top: -5px;right: -2px;" (click)="openFile(message.message)" *ngIf="getpdf(message.message)">
+            </span>
+              <div class="attachment-name" *ngIf="message.type==2  || message.types==2">{{SpltFunc(message.message)}}</div>
+            <p class="chat-time-left">{{message.created_at | date: 'short'}}</p>
+         </div>
+      </ion-col>
+      <ion-col *ngIf="message.sender_id==id">
+         <div class="chat-bubble chat-bubble-right">
+            <p class="chat-time-right">{{message.created_at | date: 'short'}}</p>
+            <span *ngIf="message.type=='1'  || message.types==1" [innerHtml]="valueReplace(message.message)">
+            
+            </span>
+            <span *ngIf="message.type==2  || message.types==2">
+               <img src={{message.message}} *ngIf="getImg(message.message)" (click)="openImage(message.message)" style="margin-bottom: 10px;">
+               <img src="assets/docimg.png" style="width: 25px;height: 24px;position: absolute;top: -5px;right: -2px;" (click)="openFile(message.message)" *ngIf="getdoc(message.message)">
+               <img src="assets/pdfimg.png" style="width: 25px;height: 24px;position: absolute;top: -5px;right: -2px;" (click)="openFile(message.message)" *ngIf="getpdf(message.message)">
+            </span>
+              <div class="attachment-name" *ngIf="message.type==2  || message.types==2">{{SpltFunc(message.message)}}</div>
+         </div>
+      </ion-col>
+      <!-- {{last ? scrollDown() : ''}} -->
+   </ion-row>
+ </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+     <ion-item lines="none" class="detail-selecter">
+        <ion-input class="chatbox" placeholder="Type your text here.." [(ngModel)]="message" (ionFocus)="ionFocus()"></ion-input>
+        <ion-icon name="send" Slot="end" color={{primary}} (click)="sendMessage()" style="font-size: 1.4rem" ></ion-icon>
+        <ion-icon src="assets/add.svg" Slot="end"  color={{attachment}} style="font-size: 1.0rem" (click)="onAttachment()"></ion-icon>
+        <input type="file" #fileInput style="visibility: hidden; width: 0;height: 0px" name="files[]" (change)="processWebImage($event)" />
+     </ion-item>
+  </ion-toolbar>
+</ion-footer>
+

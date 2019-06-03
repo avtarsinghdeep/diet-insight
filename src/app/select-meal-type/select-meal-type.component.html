@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title class="center-title margin-right-title">Select meal</ion-title>
+      <ion-buttons slot="start"><ion-icon slot="icon-only" name="close"  (click)="onDismiss(false)"></ion-icon>
+      </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar no-padding style="background: #999" *ngIf="!mealQuantity">
+    <ion-searchbar
+      [(ngModel)]="myInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)"
+      (ionCancel)="onCancel($event)" style="background: #999" >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="center-title">
+    <div *ngIf="!mealQuantity">
+      <ion-item *ngFor="let item of data" class="radio-item" >
+       <ion-checkbox  (ionChange)="selectItem(item)" [(ngModel)]="item.selected" item-left style="margin-right: 12px;"></ion-checkbox>
+      <ion-label text-wrap class="option-label-1"  item-right>{{item.food_item}}</ion-label>
+    </ion-item>
+    </div>
+    <div *ngIf="mealQuantity">
+       <!-- <div *ngFor="let item of meal_value ; let i = index " style="width: 100%;float: left;">
+      <ion-label style="float: left;width: 25px;">{{i+1}}.</ion-label>
+      <ion-label text-wrap class="item-label-main" style="width: calc(100% - 165px);float: left;">{{item.food_item}}</ion-label>
+        <ion-icon name="md-add" slot="icon-only" (click)="add(i)"> </ion-icon>
+      <ion-label class="item-label">
+        {{item.food_qty}}
+      </ion-label>
+        <ion-icon name="md-remove" slot="icon-only" (click)="remove(i)" ></ion-icon>
+    </div> -->
+    <div *ngFor="let item of meal_value ; let i = index " style="width: 100%;float: left;">
+   <span style="width: 55%;
+    float: left;">
+      <ion-item lines="none">
+      <ion-label>{{i+1}}. {{item.food_item}}</ion-label>
+    </ion-item>
+   </span>
+   <span style="width: 44%;
+    float: right;">
+      <ion-item lines="none"> <ion-icon name="md-add" slot="start" (click)="add(i)"> </ion-icon>
+      {{item.food_qty}}
+       <ion-icon name="md-remove" slot="end" (click)="remove(i)" ></ion-icon></ion-item>
+   </span>
+     </div>
+    </div>
+</ion-content>
+<ion-footer>
+	<ion-button (click)="mealQuantity?savemeal():add_user_meal()" style="width: 100%;">Submit</ion-button>
+</ion-footer>

@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center-title">Appointment</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="header-buttons">
+        <ion-icon src="assets/alert.svg" slot="icon-only" style="display: none;"></ion-icon>
+      </ion-button>
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="light">
+	<div *ngIf="appoinments.length>0">
+		<ion-card class="diet-plan-list-grid" *ngFor="let data of appoinments;index as i">
+			<ion-grid class="diet-plan-list-grid">
+				<ion-row class="diet-plan-list-row border-bottom">
+					<ion-col size="1"><ion-icon src="assets/calendar1.svg" style="font-size:1.2rem"></ion-icon></ion-col>
+					<ion-col size="8" style="align-self:center" text-start>Next Appointment</ion-col>
+					<ion-col size="3" style="align-self:center;position:relative;">
+						<!-- <ion-icon src="assets/pen1.svg" (click)="selected==i+1?selected=0:selected=i+1"></ion-icon> -->
+						<!-- <span>Edit Appt</span> -->
+						<div (click)="selected==i+1?selected=0:selected=i+1" style="color:#9a9999"><span style="float: right;">
+							<ion-button size="small" style="height: 1.4em"><ion-icon name="create" style="font-size: 15px;margin-right: 5px;"></ion-icon>Edit Appt.</ion-button></span>
+						</div>
+						<div class="appointment-edit-option" *ngIf="i+1==selected">
+							<div (click)="request(2,data.appointment_id)" style="width: 170px;font-size: 0.9rem;padding: 5px;">{{data.type=="1"?"Convert to online":"Convert to visit"}} </div>
+							<div (click)="request(1,data.appointment_id,data.date)" style="width: 170px;font-size: 0.9rem;padding: 5px;">Request to reschedule</div>
+							<div (click)="request(3,data.appointment_id,data.date)" style="width: 170px;font-size: 0.9rem;padding: 5px;">Cancel</div>
+							<div (click)="onClose()" style="width: 170px;font-size: 0.9rem;padding: 5px;text-align: center;background: #708c3a;color: #fff;">Close</div>
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row class="disc-pan-diet-plan">
+					<ion-col size="12">
+						<ion-row>
+							<ion-col size="8" text-start>
+								<b>Dt.{{data.doctor_name}}</b></ion-col>
+							<ion-col size="4" text-end><ion-icon src="assets/doctor.svg"></ion-icon></ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="6" text-start class="diet-plan-disc">
+								<b>Date</b></ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc">{{data.date}}</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="6" text-start class="diet-plan-disc">
+								<b>Time</b>
+							</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc">{{data.start_time}}</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="6" text-start class="diet-plan-disc">
+								<b>Type</b>
+							</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc" *ngIf="data?.type == 1">Visit</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc" *ngIf="data?.type == 2">Online</ion-col>
+							
+						</ion-row>
+						<ion-row *ngIf="data.reschedule_visit_request!=1">
+							<ion-col size="6" text-start class="diet-plan-disc">
+								<b>Status</b>
+							</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc" *ngIf="data?.status==0">Pending</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc" *ngIf="data?.status==1">Confirmed</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc" *ngIf="data?.status==2">Cancelled</ion-col>
+							
+						</ion-row>
+						<ion-row *ngIf="data.reschedule_visit_request==1">
+							<ion-col size="6" text-start class="diet-plan-disc">
+								<b>Reschedule/Visit</b>
+							</ion-col>
+							<ion-col size="6" text-end class="diet-plan-disc">
+								<span *ngIf="data.reschedule_status==1">Confirmed</span>
+								<span *ngIf="data.reschedule_status==2">Rejected</span>
+								<span *ngIf="data.reschedule_status==0">Pending</span>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card>
+	</div>
+	<div *ngIf="appoinments.length==0">
+		<p text-center>No Appointments</p>
+	</div>
+	<!-- <ion-card class="diet-plan-list-grid">
+		<ion-grid class="diet-plan-list-grid">
+			<ion-row class="diet-plan-list-row border-bottom">
+				<ion-col size="1"><ion-icon src="assets/calendar1.svg" style="font-size:1.2rem"></ion-icon></ion-col>
+				<ion-col size="10" style="align-self:center" text-start>Next Appointment</ion-col>
+				<ion-col size="1" style="align-self: center;"><ion-icon src="assets/pen1.svg"></ion-icon></ion-col>
+			</ion-row>
+			<ion-row class="disc-pan-diet-plan">
+				<ion-col size="12">
+					<ion-row>
+						<ion-col size="8" text-start>Dt.Lavleen</ion-col>
+						<ion-col size="4" text-end><ion-icon src="assets/doctor.svg"></ion-icon></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="6" text-start class="diet-plan-disc">Date</ion-col>
+						<ion-col size="6" text-end class="diet-plan-disc">28 Feb 2019</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="6" text-start class="diet-plan-disc">Time</ion-col>
+						<ion-col size="6" text-end class="diet-plan-disc">12:30 PM</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="6" text-start class="diet-plan-disc">Status</ion-col>
+						<ion-col size="6" text-end class="diet-plan-disc">Accepted</ion-col>
+					</ion-row>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card> -->
+</ion-content>

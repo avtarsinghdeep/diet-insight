@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start" (click)="onPop()">
+      <!-- <ion-back-button no-padding no-margin></ion-back-button> -->
+      <ion-icon name="arrow-back" style="font-size: 25px;
+    margin-left: 6px;"></ion-icon>
+    </ion-buttons>
+    <ion-title class="center-title">
+    	<span *ngIf="dataService.appointment_type==0">Visit Request</span>
+    	<span *ngIf="dataService.appointment_type==1">Reschedule</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="notification()" class="header-buttons">
+        <ion-icon src="assets/alert.svg" slot="icon-only" ></ion-icon>
+      </ion-button>
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="light">
+	<ion-card no-margin class="reschedule_card-header">
+		<span>SELECT DATE</span>
+		<ion-icon src="assets/calendar1.svg" text-end></ion-icon>
+	</ion-card>
+	<ion-card padding no-margin class="reschedule_card-date">
+		<!-- <ion-datetime [(ngModel)]="date" display-format="DD/MM/YYYY" picker-format="DD MM YYYY"></ion-datetime> -->
+		<app-calendar (dateEvent)="receiveDate($event)"></app-calendar>
+	</ion-card>
+	<ion-card no-margin class="reschedule_card-header">
+		<span>SELECT TIME</span>
+		<ion-icon name="clock" text-end></ion-icon>
+	</ion-card>
+	<ion-card padding no-margin class="reschedule_card-time">
+		<ion-grid>
+			<ion-row class="header">
+				<ion-col size="4">HOURS</ion-col>
+				<ion-col size="1"> </ion-col>
+				<ion-col size="4">MINUTES</ion-col>
+				<ion-col size="3">AM/PM</ion-col>
+			</ion-row>
+			<ion-row class="content">
+				<ion-col class="content-selecter" size="4">
+					<ion-row class="content-selecter-row">
+						<ion-col size="8" class="content-selecter-row-col">
+							<p no-padding no-margin>
+								{{hours}}
+							</p>
+							<!-- <ion-input type="number" [(ngModel)]="hours" minlength=2></ion-input> -->
+						</ion-col>
+						<ion-col size="4" class="content-selecter-row-col1" no-padding>
+							<ion-row (click)="hours_up()" class="content-selecter-row-col-row even">
+								<p no-padding no-margin>
+									<ion-icon src="assets/up-arrow.svg">
+									</ion-icon>
+								</p>
+							</ion-row>
+							<ion-row (click)="hours_down()" class="content-selecter-row-col-row">
+								<p no-padding no-margin>
+									<ion-icon src="assets/down-arrow.svg"></ion-icon>
+								</p>
+							</ion-row>
+						</ion-col>
+					</ion-row>
+				</ion-col>
+				<ion-col class="content-dot" size="1"><p no-margin>:</p></ion-col>
+				<ion-col class="content-selecter" size="4">
+					<ion-row class="content-selecter-row">
+						<ion-col size="8" class="content-selecter-row-col">
+							<p no-padding no-margin>
+								{{minutes}}
+							</p>
+						</ion-col>
+						<ion-col size="4" class="content-selecter-row-col1" no-padding>
+							<ion-row (click)="minutes_up()" class="content-selecter-row-col-row even">
+								<p no-padding no-margin>
+									<ion-icon src="assets/up-arrow.svg">
+									</ion-icon>
+								</p>
+							</ion-row>
+							<ion-row (click)="minutes_down()" class="content-selecter-row-col-row">
+								<p no-padding no-margin>
+									<ion-icon src="assets/down-arrow.svg"></ion-icon>
+								</p>
+							</ion-row>
+						</ion-col>
+					</ion-row>
+				</ion-col>
+				<ion-col class="content-selecter" size="3">
+					<ion-row class="content-selecter-row">
+						<ion-col size="8" class="content-selecter-row-col">
+							<p no-padding no-margin>
+								{{am_pm}}
+							</p>
+						</ion-col>
+						<ion-col size="4" class="content-selecter-row-col1" no-padding>
+							<ion-row (click)="am_pm_change()" class="content-selecter-row-col-row even">
+								<p no-padding no-margin>
+									<ion-icon src="assets/up-arrow.svg">
+									</ion-icon>
+								</p>
+							</ion-row>
+							<ion-row (click)="am_pm_change()" class="content-selecter-row-col-row">
+								<p no-padding no-margin>
+									<ion-icon src="assets/down-arrow.svg"></ion-icon>
+								</p>
+							</ion-row>
+						</ion-col>
+					</ion-row>
+				</ion-col>
+			</ion-row>
+			<ion-row text-center margin-top>
+				<ion-button (click)="submit()" style="margin: auto;width: 55%;height:30px;--background:#94c03e;">DONE</ion-button>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+</ion-content>

@@ -1,0 +1,48 @@
+.plan-title{
+	font-size: 0.8rem;
+}
+.border-payment:after{
+	position: absolute;
+    content: ' ';
+    top: calc( 50% - 7px );
+    left: 8px;
+    width: 15px;
+    height: 15px;
+    background: #ddd;
+    border-radius: 50%;
+}
+.payment-card{
+	box-shadow: none;
+}
+.save-button{
+	border-radius: 10px;
+}
+.activated-tab:after{
+	position: absolute;
+    content: ' ';
+    top: calc( 50% - 7px );
+    left: 8px;
+    width: 15px;
+    height: 15px;
+    background: #708C3A;
+    border-radius: 50%;
+}
+.activated-tab{
+	position: relative;
+	// border:2px solid #708C3A;
+	visibility: visible;
+}
+.payment-card-item{
+	border-bottom:1px solid #ddd;
+	visibility: visible;
+	--border-color:transparent;
+	>ion-icon{
+		margin-left: 15px;
+		margin-right: 10px;
+	    font-size: 1.8rem;
+	}
+}
+.save-payment-method{
+	--padding-start:0px;
+	--background:transparent;
+}

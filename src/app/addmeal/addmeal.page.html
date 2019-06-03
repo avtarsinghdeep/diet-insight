@@ -1,0 +1,242 @@
+<!-- <ion-header>
+   <ion-toolbar color="tertiary">
+     <ion-buttons slot="start">
+      <ion-back-button no-margin no-padding></ion-back-button>
+    </ion-buttons>
+      <ion-title class="center-title margin-right-title">Add Meal</ion-title>
+   </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <div class="seg-div">
+      <ion-segment (ionChange)="segmentChanged($event,selectedTabIndex)" class="seg-btn" [(ngModel)]="selectedTabIndex" >
+      <ion-segment-button value="1" >
+         <ion-label>Calories</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2" >
+         <ion-label>Water</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="3" >
+         <ion-label>Weight</ion-label>
+      </ion-segment-button>
+      </ion-segment>
+   </div>
+      <div [ngSwitch]="selectedTabIndex">
+      <div class="bg-login-bg" *ngSwitchCase="'1'">
+      	Calories
+         <ion-button (click)="onAddMeal()">Add meal</ion-button>
+      </div>
+      <div class="bg-login-bg" *ngSwitchCase="'2'">
+      	Water
+          <ion-button>Add Water</ion-button>
+      </div>
+      <div class="bg-login-bg" *ngSwitchCase="'3'">
+      	Weight
+          <ion-button>Add Weight</ion-button>
+      </div>
+  </div>
+</ion-content>
+ -->
+
+ <ion-header>
+   <ion-toolbar color="tertiary">
+     <ion-buttons slot="start">
+      <ion-back-button no-margin no-padding></ion-back-button>
+    </ion-buttons>
+      <ion-title class="center-title">Daily Update</ion-title>
+       <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <div class="seg-div">
+      <ion-segment (ionChange)="segmentChanged($event,selectedTabIndex)" [(ngModel)]="selectedTabIndex" class="home-segment" color="dark" >
+      <ion-segment-button value="1" no-padding style="padding:0!important;--border-color: #f2f2f2; color: #888888;" class="seg-btn">
+          <div> 
+           <ion-label> MEALS</ion-label>
+            </div>
+         <!-- <ion-label>Calories</ion-label> -->
+      </ion-segment-button>
+      <ion-segment-button value="2" no-padding style="padding:0!important;--border-color: #f2f2f2; color: #888888;" class="seg-btn">
+          <div> 
+              WATER
+              </div>
+         <!-- <ion-label>Water</ion-label> -->
+      </ion-segment-button>
+      <ion-segment-button value="3" no-padding style="padding:0!important;--border-color: #f2f2f2; color: #888888;" class="seg-btn">
+          <div> 
+              WEIGHT
+              </div>
+      </ion-segment-button>
+      </ion-segment>
+   </div>
+      <div [ngSwitch]="selectedTabIndex">
+      <div class="bg-login-bg" *ngSwitchCase="'1'">
+
+                  <ion-card full style="padding: 20px;margin: 0;width: 100%;box-shadow: none;">
+
+              <div style="width: 100%;float: left;">
+                <p style="width: 100%;color:#999;font-size: 0.75rem;text-align: left;">For Today i.e {{month}} {{day}} {{year}}</p>
+                <table style="width: 100%;text-align: center;float: left;margin-top: 15px;">
+                  <tr>
+                    <th class="padding-bottom">Meal Time</th>
+                    <th class="padding-bottom">Meal</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="qty"></td>
+                  </tr>
+                </table>
+                <table style="width: 100%;text-align: center;float: left;" *ngFor="let food of user_daily_meal">
+                  <tr class="middel-label">
+                    <td>{{food.meal_time}}</td>
+                    <td style="position: relative">{{food.meal_value}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="qty"></td>
+                  </tr>
+                </table>
+              
+                <table style="width: 100%;text-align: center;float: left;">
+                  <tr>
+                    <td colspan="3" style="background: transparent;">
+                      <button ion-button style="font-size: 1rem;
+                      margin-top: 10px;
+                      background: linear-gradient(45deg,#91BD3E,#708C37)!important;
+                      border-radius: 5px;
+                      color: white;
+                      padding: 0.5rem 1rem;" (click)="onAddMeal()">Add</button>
+                      
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </ion-card>
+<!--           <ion-card full style="padding: 20px;margin: 0;width: 100%;box-shadow: none;">
+
+              <div style="width: 100%;float: left;">
+                <p style="width: 100%;color:#999;font-size: 0.75rem;text-align: left;">For Today i.e {{month}} {{day}} {{year}}</p>
+                <table style="width: 100%;text-align: center;float: left;margin-top: 15px;">
+                  <tr>
+                    <th class="padding-bottom">Meal</th>
+                    <th class="padding-bottom">Qty.</th>
+                    <th class="padding-bottom">Kcal</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td class="qty"></td>
+                    <td></td>
+                  </tr>
+                </table>
+                <table style="width: 100%;text-align: center;float: left;" *ngFor="let food of user_daily_meal">
+                  <tr class="middel-label">
+                    <td>{{food.meal_name}}</td>
+                    <td></td>
+                    <td style="position: relative"></td>
+                  </tr>
+              
+                  <tr *ngFor="let fooditem of food.meal_value">
+                    <td>{{fooditem.food_item}}</td>
+                    <td class="qty">{{fooditem.food_qty}}</td>
+                    <td>{{fooditem.calories}}</td>
+                  </tr>
+                </table>
+              
+                <table style="width: 100%;text-align: center;float: left;">
+                  <tr>
+                    <td colspan="3" style="background: transparent;">
+                      <button ion-button style="font-size: 1rem;
+                      margin-top: 10px;
+                      background: linear-gradient(45deg,#91BD3E,#708C37)!important;
+                      border-radius: 5px;
+                      color: white;
+                      padding: 0.5rem 1rem;" (click)="onAddMeal()">Add</button>
+                      
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </ion-card> -->
+      </div>
+   <div class="bg-login-bg" *ngSwitchCase="'2'">
+         <ion-card full style="padding: 20px;margin: 0;width: 100%;box-shadow: none;text-align: center;">
+             <p style="width: 100%;color:#999;font-size: 0.75rem;margin-bottom: 20px;">For Today i.e {{month}} {{day}} {{year}}</p>
+             <div class="water-div-content">
+               <p class="header-water-div-content">
+                  Today’s Intake
+               </p>
+               <p class="disc-water-div-content">{{water_tab_detail.ideal_water}}</p>
+             </div>
+             <div class="water-div-content">
+               <p class="header-water-div-content">
+                
+                Goal Intake
+               </p>
+               <p class="disc-water-div-content">{{water_tab_detail.goal}}</p>
+             </div>
+              <table style="width: 100%;text-align: center;float: left;">
+                  <tr>
+                    <td colspan="3" style="background: transparent;">
+                      <button ion-button style="font-size: 1rem;
+                      margin-top: 10px;
+                      background: linear-gradient(45deg,#91BD3E,#708C37)!important;
+                      border-radius: 5px;
+                      color: white;
+                      padding: 0.5rem 1rem;" (click)="addWater()">Add</button>
+                      
+                    </td>
+                  </tr>
+                </table>
+             <hr style="float: left;width: 100%;background: #cbcbcb;margin-top: 15px;">
+             <p style="width: 100%;color:#999;font-size: 0.75rem;text-align: center;">Water intake log</p>
+             <table style="width: 100%;text-align: center;float: left;margin-top: 15px;">
+               <tr >
+                 <th class="padding-bottom-color" *ngIf="water_tab_detail.history != null">Day</th>
+                 <th class="padding-bottom-color" *ngIf="water_tab_detail.history != null">Total Water</th>
+               </tr>
+               <tr *ngFor="let a of water_tab_detail.history">
+                 <td class="water-div">{{a.water_intake_date}}</td>
+                 <td class="water-div-right">{{a.water_intake_glasses}}</td>
+               </tr>
+             </table>
+           <!--   <ion-button (click)="addWater()" style="width: 150px;margin: 50px calc(50% - 75px) 0;background: linear-gradient(45deg,#91BD3E,#708C37)!important;" >Add</ion-button> -->
+         
+           </ion-card>
+     </div>
+      <div class="bg-login-bg" *ngSwitchCase="'3'" padding>
+       <ion-grid>
+         <ion-row style="margin:5px 0;">
+           <ion-col text-center>Initial Weight</ion-col>
+           <ion-col text-center>Current Weight</ion-col>
+         </ion-row>
+         <ion-row style="margin:5px 0;border-bottom: 1px solid #ddd">
+           <ion-col text-center style="color:#708C3A;">{{initial}} Kgs</ion-col>
+           <ion-col text-center style="color:#708C3A;">{{current}} Kgs</ion-col>
+         </ion-row>
+         <ion-row style="margin:5px 0;">
+           <ion-col text-center style="color:#999">Total weight {{current>initial?'gain':'Loss'}}: {{average}} Kgs</ion-col>
+
+         </ion-row>
+       </ion-grid>
+     <!--   <ion-button (click)="addWeight()" item-center style="width: 150px;margin: 50px calc(50% - 75px) 0;background: linear-gradient(45deg,#91BD3E,#708C37)!important;">Add Weight</ion-button> -->
+      <table style="width: 100%;text-align: center;float: left;">
+                  <tr>
+                    <td colspan="3" style="background: transparent;">
+                      <button ion-button style="font-size: 1rem;
+                      margin-top: 10px;
+                      background: linear-gradient(45deg,#91BD3E,#708C37)!important;
+                      border-radius: 5px;
+                      color: white;
+                      padding: 0.5rem 1rem;" (click)="addWeight()">Add</button>
+                      
+                    </td>
+                  </tr>
+                </table>
+     </div>
+  </div>
+</ion-content>

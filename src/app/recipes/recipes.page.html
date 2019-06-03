@@ -1,0 +1,28 @@
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+         <ion-back-button defaultHref="home"  no-margin no-padding *ngIf="dataService.platform == 'ios'"></ion-back-button>
+         <ion-menu-button no-margin no-padding></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">Recipes</ion-title>
+      <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+      </ion-buttons>
+   </ion-toolbar>
+   <!-- <ion-searchbar class="search"></ion-searchbar> (ionCancel)="onCancel($event)"-->
+    <ion-searchbar [(ngModel)]="myInput" no-padding (ionChange)="onInput($event)" cancelButtonIcon="false" (ionClear)="onclear($event)">
+    </ion-searchbar>
+</ion-header>
+<ion-content>
+
+   <ion-card *ngFor="let recipe of recipe_list">
+      <ion-card-header>
+         <ion-card-title class="recipe_title">{{recipe.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content (click)="onRecipes(recipe)" >
+         <img src="{{recipe.image}}" class="recipe_img">
+      </ion-card-content>
+   </ion-card>
+</ion-content>

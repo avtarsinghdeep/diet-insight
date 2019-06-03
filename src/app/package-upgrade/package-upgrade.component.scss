@@ -1,0 +1,35 @@
+
+
+.upgrade-btn-div {
+	width: 100%;
+	text-align: center;
+	padding: 16px;
+}
+
+.upgrade-small-btn {
+	border-radius: 0 !important;
+	text-transform: uppercase;
+	background: var(--ion-color-base);
+}
+
+.item {
+	--inner-padding-end: 0px;
+	border: 1px solid #cecece;
+	--min-height: 35px !important;
+	margin-top: 5px;
+	>.in-item {
+		--padding-start: 0px;
+		--border-color: 0px solid #fff !important;
+		text-align: center;
+		width: 100%;
+	}
+	>.datetime-placeholder {
+		font-size: 13px;
+	}
+}
+
+.package-upgrade-header {
+	text-align: center;
+	padding: 12px;
+}
+

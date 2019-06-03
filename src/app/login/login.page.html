@@ -1,0 +1,115 @@
+<ion-content class="bg-login-contant">
+   <div class="bg-login-bg">
+      <div style="width: 100%;" class="bg-login">
+         <img src="/assets/logo.png" width="60%" style="" class="logo" style="">
+         <!-- <ion-item lines="none" class="border-class">
+          <ion-label>Login with</ion-label>
+          <ion-select placeholder="Login with" [(ngModel)]="Login_with">
+            <ion-select-option value="1">Email address</ion-select-option>
+            <ion-select-option value="2">Mobile no.</ion-select-option>
+          </ion-select>
+      </ion-item> -->
+  
+                     <ion-item lines="none" no-padding class="border-class">
+                        <ion-radio-group  style="width: 100%;" [(ngModel)]="Login_with">
+                           <ion-item lines="none" no-margin style="width: 48%;float: left;">
+                              <ion-label>Email</ion-label>
+                              <ion-radio color="success" value="1" checked></ion-radio>
+                           </ion-item>
+                           <ion-item lines="none" no-margin style="width: 48%;float: left;">
+                              <ion-label>Mobile no.</ion-label>
+                              <ion-radio color="success" value="2"></ion-radio>
+                           </ion-item>
+                        </ion-radio-group>
+                     </ion-item>
+
+         <form [formGroup]="login_form" *ngIf="Login_with=='1'">
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="md-mail" slot="start"></ion-icon>
+               <ion-input formControlName="email" type="text" placeholder="Email address"></ion-input>
+            </ion-item>
+           
+            <div class="invalid-input" [hidden]="login_form.controls['email'].valid || !login_form.controls['email'].touched">
+               Please check your E-mail
+            </div>
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="ios-key" slot="start" style="transform: rotate(-90deg);"></ion-icon>
+               <ion-input formControlName="password" type="Password" placeholder="Password"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="login_form.controls['password'].valid || !login_form.controls['password'].touched">
+               Please enter more than 5 characters
+            </div>
+         </form>
+
+<!-- login with mobile number  -->
+          <form [formGroup]="login_form1"  *ngIf="Login_with=='2'">
+
+             <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="md-phone-portrait" slot="start"></ion-icon>
+               <ion-input formControlName="phoneNo" type="tel" placeholder="Mobile no." (ionChange)="onInput(user.phoneNo)" [(ngModel)]="user.phoneNo"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="login_form1.controls['phoneNo'].valid || !login_form1.controls['phoneNo'].touched">
+                Please enter valid Phone No
+                <span *ngIf="zero">(or Do not enter 0 in front of the number).</span>
+            </div>
+            <!--        <div style="    float: left;
+               margin: 10px 10%;
+               width: 80%;">
+               <span >
+                  <ion-item lines="none" style="width: 40%;
+                     float: left;
+                     border-radius: 25px;
+                     border: 1px;
+                     overflow: hidden;
+                     border: 3px solid rgba(0, 0, 0, 0.15);" (click)="SelectCountryCode()">
+                     <ion-icon [src]="img" color="success" class="margin-right" name="md-phone-portrait" slot="start"></ion-icon>
+                     <ion-label class="select-country-code" style="color: #777777;">{{user.country_code}}
+                     </ion-label>
+                  </ion-item>
+               </span>
+               <span >
+                  <ion-item lines="none" style="width: 58%;
+                     float: left;
+                     border: 3px solid rgba(0, 0, 0, 0.15);
+                     border-radius: 25px;
+                     overflow: hidden;
+                     margin-left: 5px;" >
+                     <ion-input formControlName="phoneNo" type="tel" placeholder="Mobile Number"  (ionInput)="onInput($event)"></ion-input>
+                  </ion-item>
+                  <div class="invalid-input" [hidden]="login_form1.controls['phoneNo'].valid || !login_form1.controls['phoneNo'].touched">
+                    Please enter valid Phone No.<span> or Do not enter 0 in front of the number</span>
+                  </div>
+               </span>
+            </div> -->
+            <ion-item lines="none" class="border-class">
+               <ion-icon color="success" class="margin-right" name="ios-key" slot="start" style="transform: rotate(-90deg);"></ion-icon>
+               <ion-input formControlName="password" type="Password" placeholder="Password"></ion-input>
+            </ion-item>
+            <div class="invalid-input" [hidden]="login_form1.controls['password'].valid || !login_form1.controls['password'].touched">
+               Please enter more than 5 characters
+            </div>
+         </form>
+         <ion-button class="login-button" shape="round" color="success" (click)="login()">Login</ion-button>
+         <div class="forgot-login-with" (click)="forgot()">FORGOT PASSWORD?</div>
+         <div class="signup-text" (click)="signUp()">
+            Don't have an account?<span class="signup-button" 
+               >  Sign Up</span>
+         </div>
+         <div class="forgot-login-with-or">--------OR LOGIN WITH--------</div>
+         <div class="social-icons">
+            <div class="block">
+               <div class="social-logo border-facebook">
+                  <div class="inner-circle" (click)="fb_login()">
+                     <img src="./assets/facebook-logo.svg">
+                  </div>
+               </div>
+               <div class="social-logo border-gmail">
+                  <div class="inner-circle" (click)="gmail_login()">
+                     <img src="./assets/gmail.svg">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</ion-content>

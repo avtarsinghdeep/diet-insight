@@ -1,0 +1,44 @@
+
+
+<ion-content>
+   <div style="position: relative;">
+     <img src="assets/icon/4.png" style="max-width: 100%;
+    border: 0;
+    height: 280px;
+    width: 100%;">
+    <div style="    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;"><p style="    width: 100%;
+    text-align: center;
+    color: #fff;">Meal Type</p></div>
+   </div>
+<!--    <ion-item  class="border-class">
+      <ion-label>Meal type</ion-label>
+      <ion-input type="text" placeholder="Enter meal type" style="text-align: right;" [(ngModel)]="meal_name"></ion-input>
+   </ion-item> -->
+   <ion-item>
+      <ion-label position="stacked">Select Time</ion-label>
+      <ion-datetime display-format="hh:mm:ss A"  [(ngModel)]="myDate" 
+      (ionChange)="change(myDate)" placeholder="Select time"></ion-datetime>
+   </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Meal Value</ion-label>
+      <ion-textarea rows="6" cols="20" placeholder="Enter meal here..." [(ngModel)]="meal_name"></ion-textarea>
+   </ion-item>
+</ion-content>
+<ion-footer>
+     <div style="text-align: center;">
+      <span style="width: 49%;float: left;">
+        <ion-button style="width: 80%;text-transform: capitalize;" (click)="onSubmit(2)">Cancel</ion-button>
+      </span>
+      <span style="width: 49%;float: left;">
+          <ion-button style="width: 80%;text-transform: capitalize;" (click)="onSubmit(1)" [disabled]="!myDate&&!meal_name">Submit</ion-button>
+      </span>
+   </div>
+</ion-footer>
+
+

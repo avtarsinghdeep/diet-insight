@@ -1,0 +1,43 @@
+<ion-header>
+		<ion-toolbar color="tertiary">
+		   <ion-buttons slot="start" no-padding no-margin>
+			  <ion-back-button no-padding no-margin defaultHref="signup"></ion-back-button>
+		   </ion-buttons>
+		</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-login-contant">
+	<div class="bg-login-bg">
+		<!-- <div class="top-header"><span class="top-header-text">Forgot Password</span></div> -->
+		<div style="width: 100%;" class="bg-login">
+			<img src="/assets/logo.png" width="60%" style="" class="logo" style="">
+			<div class="signup-text text-title">
+				Enter OTP
+			</div>
+			<div class="otp-input-div">
+										<ion-input placeholder="0" type="tel" name="otp1" id="otp1" #otp1  maxlength="1" (keyup)="updateList($event,1)" class="otp-input"></ion-input>
+										<ion-input placeholder="0" type="tel" name="otp2" id="otp2" #otp2  maxlength="1" (keyup)="updateList($event,2)" class="otp-input"></ion-input>
+										<ion-input placeholder="0" type="tel" name="otp3" id="otp3" #otp3  maxlength="1" (keyup)="updateList($event,3)" class="otp-input"></ion-input>
+										<ion-input placeholder="0" type="tel" name="otp4" id="otp4" #otp4  maxlength="1" (keyup)="updateList($event,4)" class="otp-input"></ion-input>
+										<ion-input placeholder="0" type="tel" name="otp5" id="otp5" #otp5  maxlength="1" (keyup)="updateList($event,5)" class="otp-input"></ion-input>
+										<ion-input placeholder="0" type="tel" name="otp6" id="otp6" #otp6  maxlength="1" (keyup)="updateList($event,6)" class="otp-input"></ion-input>
+						
+				<!-- <input placeholder="0" onfocus="this.select()" type="tel" name="otp1" #otp1 id="otp1" maxlength="1" class="otp-input">
+				<input placeholder="0" onfocus="this.select()" type="tel" name="otp2" #otp2 id="otp2" maxlength="1" class="otp-input">
+				<input placeholder="0" onfocus="this.select()" type="tel" name="otp3" #otp3 id="otp3" maxlength="1" class="otp-input">
+				<input placeholder="0" onfocus="this.select()" type="tel" name="otp4" #otp4 id="otp4" maxlength="1" class="otp-input">
+				<input placeholder="0" onfocus="this.select()" type="tel" name="otp5" #otp5 id="otp5" maxlength="1" class="otp-input">
+				<input placeholder="0" onfocus="this.select()" type="tel" name="otp6" #otp6 id="otp6" maxlength="1" class="otp-input"> -->
+			</div>
+			<div class="invalid-input" [hidden]="submit" *ngIf="otp.length!=6">
+		      Please check your OTP
+			</div>
+			
+			<div>
+				<ion-label style="font-size: 0.8rem;">If you didn't receive a code!    <span style="color: #708c3a;font-size: 0.9rem;" (click)='onSendOtp()'>  Resend</span></ion-label>
+			</div>
+
+			<ion-button class="login-button" shape="round" color="success" (click)='onSend()' >Send</ion-button>
+		</div>
+	</div>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-content class="bg-login-contant">
+	<div class="bg-login-bg">
+		<!-- <div class="top-header"><span class="top-header-text">Forgot Password</span></div> -->
+		<div style="width: 100%;" class="bg-login">
+			<img src="/assets/logo.png" width="60%" style="" class="logo" style="">
+			<div class="signup-text text-title">
+				Enter OTP
+			</div>
+			<div class="otp-input-div">
+						<ion-input placeholder="0" type="tel" name="otp1" id="otp1" #otp1  maxlength="1" (keyup)="updateList($event,1)" class="otp-input"></ion-input>
+						<ion-input placeholder="0" type="tel" name="otp2" id="otp2" #otp2  maxlength="1" (keyup)="updateList($event,2)" class="otp-input"></ion-input>
+						<ion-input placeholder="0" type="tel" name="otp3" id="otp3" #otp3  maxlength="1" (keyup)="updateList($event,3)" class="otp-input"></ion-input>
+						<ion-input placeholder="0" type="tel" name="otp4" id="otp4" #otp4  maxlength="1" (keyup)="updateList($event,4)" class="otp-input"></ion-input>
+						<ion-input placeholder="0" type="tel" name="otp5" id="otp5" #otp5  maxlength="1" (keyup)="updateList($event,5)" class="otp-input"></ion-input>
+						<ion-input placeholder="0" type="tel" name="otp6" id="otp6" #otp6  maxlength="1" (keyup)="updateList($event,6)" class="otp-input"></ion-input>
+			</div>
+			<div class="invalid-input" [hidden]="submit" *ngIf="otp.length!=6">
+		      Please check your OTP
+		    </div>
+			<form [formGroup]="forgot_form">
+			    <ion-item lines="none" class="border-class">
+					<ion-icon color="success" class="margin-right" name="ios-key" slot="start" style="transform: rotate(-90deg);"></ion-icon>
+					<ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+				</ion-item>
+				<div class="invalid-input" [hidden]="forgot_form.controls['password'].valid || !forgot_form.controls['password'].touched">
+					Please enter more than 7 characters
+			    </div>
+				<ion-item lines="none" class="border-class">
+					<ion-icon color="success" class="margin-right" name="ios-key" slot="start" style="transform: rotate(-90deg);"></ion-icon>
+					<ion-input formControlName="confirmPassword" type="password" placeholder="Confirm Password"></ion-input>
+				</ion-item>
+				<div class="invalid-input" [hidden]="forgot_form.value.confirmPassword==forgot_form.value.password&&(forgot_form.controls['confirmPassword'].valid || !forgot_form.controls['confirmPassword'].touched)">
+			      Password doesn't match
+			    </div>
+			</form>
+			<ion-button class="login-button" shape="round" color="success" (click)='forgot()'>Send</ion-button>
+
+			<div class="signup-text" >
+				Don't have an account?<span class="signup-button" (click)="signup()"> Sign up</span>
+			</div>
+		</div>
+	</div>
+</ion-content>

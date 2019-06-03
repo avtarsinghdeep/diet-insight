@@ -1,0 +1,187 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+  	<ion-buttons slot="start" no-padding no-margin>
+      <ion-back-button no-padding no-margin></ion-back-button>
+    </ion-buttons>
+    <ion-title class="center-title" text-capitalize>{{service?.service_name}}</ion-title>
+     <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="background: #ddd">
+	<div *ngIf="service" class="service-div">
+		<img src="{{service?.image}}" class="service-img">
+		<!-- Service's detail Segment -->
+		<ion-segment class="content__segment--shadow" [(ngModel)]="section" scrollable style="background-color: #fefffe;">
+			<ion-segment-button class="content__segment--shadow-button" value="description" checked style="padding:0!important;--border-color: #fefffe; color: #888888;">
+				<span style="text-transform: none;">Description</span>
+			</ion-segment-button>
+			<ion-segment-button class="content__segment--shadow-button" value="features" style="padding:0!important;--border-color: #fefffe; color: #888888;">
+				<span style="text-transform: none;">Features</span>
+			</ion-segment-button>
+			<ion-segment-button class="content__segment--shadow-button" value="testmonials" style="padding:0!important;--border-color: #fefffe; color: #888888;" [hidden]="testimonials.length<1">
+				<span style="text-transform: none;">Testimonials</span>
+			</ion-segment-button>
+			<ion-segment-button class="content__segment--shadow-button" value="faq" style="padding:0!important;--border-color: #fefffe; color: #888888;">
+				<span style="text-transform: none;">FAQ</span>
+			</ion-segment-button>	
+		</ion-segment>
+	</div>
+	<div [ngSwitch]="section">
+		<ion-list *ngSwitchCase="'description'" style="padding-left: 10px;
+    padding-right: 10px;">
+			<ion-item lines="none">
+				<div style="width: 100%;float: left;">
+					<p class="service-disc" [innerHtml]="service.service_description"></p>
+					<ion-grid no-padding hidden>
+						<ion-row class="border-row">
+							<ion-col size="10">
+								<ion-label class="ion-col-header">
+									Program features
+								</ion-label>
+							</ion-col>
+							<ion-col size="2">
+								<ion-icon name="add"></ion-icon>
+							</ion-col>
+						</ion-row>
+						<ion-row class="border-row">
+							<ion-col size="10">
+								<ion-label class="ion-col-header">
+									Diet style
+								</ion-label>
+							</ion-col>
+							<ion-col size="2">
+								<ion-icon name="add"></ion-icon>
+							</ion-col>
+						</ion-row>
+						<ion-row class="border-row">
+							<ion-col size="10">
+								<ion-label class="ion-col-header">
+									Packages include
+								</ion-label>
+							</ion-col>
+							<ion-col size="2">
+								<ion-icon name="add"></ion-icon>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					<hr style="height: 1px;border-width: 0;box-sizing: content-box;background: #c5bfbf;">
+					<ion-label margin-top>Choose your package</ion-label>
+					<div *ngFor="let variation of service.variation;index as i">
+						<ion-card no-margin margin-top >
+							<ion-item (click)="packageSelect(variation)" class="activated" color="success">
+								<ion-label class="plan-title">{{variation.duration_no}} {{variation.duration_type}} <!-- ({{variation.no_of_dietcharts}} DIET PLANS) -->
+								</ion-label>
+								<ion-icon name="ios-arrow-down" slot="end" color="light"></ion-icon>
+							</ion-item>
+						</ion-card>
+						<div class="package-div" padding *ngIf="plan!=null && plan.variation_id == variation.variation_id">
+							<img src="assets/package.png" class="package-div-img">
+							<ion-label style="color:#8484A4" class="package-price"><sup>₹</sup>{{plan.duration_price_inr}}</ion-label>
+							<ion-label style="color:#8484A4" padding-bottom class="package-price"><sup>$</sup>{{plan.duration_price_us}}</ion-label>
+							<ion-label text-wrap text-uppercase style="color:#8484A4" padding-bottom class="package-div-text">{{plan.quotation}}</ion-label>
+							<ion-button color="success" class="buy-button" (click)="buy(plan,i)" *ngIf="has_package=='true' && dataService.upgrade_status &&  service_id == buypack_service_id">Join Now</ion-button>
+                            <ion-button color="success" class="buy-button" (click)="buy(plan,i)" *ngIf="has_package=='false' || buypack_service_id == null">Join Now</ion-button>
+						</div>	
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-list *ngSwitchCase="'features'" style="padding-left: 10px;
+    padding-right: 10px;">
+			<ion-grid no-padding no-margin>
+				<ion-row>
+					<ion-col no-padding>
+						<ion-item lines="none" style="border-bottom:1px solid #ddd;border-top:1px solid #ddd" (click)="feature_selected=0">
+							<ion-icon style="margin-right: 10px" color="primary" item-left src="assets/program_features.svg"></ion-icon>
+							<ion-label>Program features</ion-label>
+							<ion-icon *ngIf="feature_selected!=0"  name="arrow-dropdown" text-right></ion-icon>
+							<ion-icon *ngIf="feature_selected==0" name="arrow-dropup" text-right></ion-icon>
+						</ion-item>
+						<ul *ngIf="feature_selected==0" class="features_ul">
+							<li *ngFor="let data of service.features">{{data}}</li>
+						</ul>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col no-padding>
+						<ion-item lines="none" style="border-bottom:1px solid #ddd;border-top:1px solid #ddd" (click)="feature_selected=1">
+							<ion-icon style="margin-right: 10px" color="primary" item-left src="assets/diet_style.svg"></ion-icon>
+							<ion-label>Diet style</ion-label>
+							<ion-icon *ngIf="feature_selected!=1"  name="arrow-dropdown" text-right></ion-icon>
+							<ion-icon *ngIf="feature_selected==1"  name="arrow-dropup" text-right></ion-icon>
+						</ion-item>
+						<ul *ngIf="feature_selected==1" class="features_ul">
+							<li *ngFor="let data of service.dietstyle">{{data}}</li>
+						</ul>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col no-padding>
+						<ion-item lines="none" style="border-bottom:1px solid #ddd;border-top:1px solid #ddd" (click)="feature_selected=2">
+							<ion-icon style="margin-right: 10px" color="primary" item-left name="list-box"></ion-icon>
+							<ion-label>What you get</ion-label>
+							<ion-icon *ngIf="feature_selected!=2"  name="arrow-dropdown" text-right></ion-icon>
+							<ion-icon *ngIf="feature_selected==2" (click)="feature_selected=2" name="arrow-dropup" text-right></ion-icon>
+						</ion-item>
+						<ul *ngIf="feature_selected==2" class="features_ul">
+							<li *ngFor="let data of service.what_you_get">{{data}}</li>
+						</ul>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-list>
+		<ion-list *ngSwitchCase="'testmonials'" style="padding-left: 10px;
+    padding-right: 10px;">
+			  <div lines="none" class="list__item--shadow" *ngFor="let testimonial of testimonials"  (click)="onTestimonials(testimonial)">
+				<img src="{{testimonial.test_image}}" class="testimonial_img">
+				<div class="myOverlay">
+					<div class="card-title"></div>
+					<ion-img src="../../assets/right-arrow.svg" class="img__forward"> </ion-img>
+				</div>
+			  </div>
+		</ion-list>
+		<ion-list *ngSwitchCase="'faq'" style="padding-left: 10px;
+    padding-right: 10px;">
+			<!-- <ion-item lines='none'>
+	         	<span style="color:#555;text-align: center">Data not Found</span>
+			  </ion-item> -->
+			  
+			  <div class="bottom-card">
+				<ol style="padding-left: 10px;color:rgb(8, 8, 1);list-style-type:none;">
+				   <li *ngFor="let q of faqs;let i=index" (click)="enableFAQ(i,q.FAQSTATUS)" style="font-size:bold;background:#fff;width: 100%;margin-bottom: 12px;border-radius: 5px ;text-align: justify;">
+				   <ion-card class="card-padding">
+					<ion-icon name={{funcicon(q.FAQSTATUS)}}  style="float: right;font-size: 1.2rem; margin-left: 1rem;"></ion-icon>
+					  <span style="font-size: 1rem;color: #232222;" [innerHtml]="q.question">
+						 {{i+1}}
+						 
+					  </span>
+					  <br>
+					  <span *ngIf="q.FAQSTATUS" style="font-size: 0.9rem;color:#555;text-align: justify;" [innerHtml]="q.answer"></span>
+				   </ion-card>
+				   </li>
+				</ol>
+			 </div>
+		</ion-list>
+	</div>
+</ion-content>
+		<!-- <ion-list *ngSwitchCase="'two'">
+			<ion-item *ngFor="let something of somethings">
+				<ion-thumbnail item-left>
+					<img src="https://avatars.io/instagram/unknown">
+				</ion-thumbnail>
+				<h2>Something</h2>
+			</ion-item>
+		</ion-list>
+
+		<ion-list *ngSwitchCase="'three'">
+			<ion-item *ngFor="let something of somethings">
+				<ion-thumbnail item-left>
+					<img src="https://avatars.io/instagram/unknown">
+				</ion-thumbnail>
+				<h2>Something</h2>
+			</ion-item>
+		</ion-list> -->

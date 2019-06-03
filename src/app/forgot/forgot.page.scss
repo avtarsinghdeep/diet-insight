@@ -1,0 +1,133 @@
+.bg-login-contant{
+    position: relative;
+}
+.form__or-div{
+	float: left;
+    text-align: center;
+    width: 100%;
+	>.form__or{
+		    margin: auto;
+    /* float: left; */
+    font-size: 0.7rem;
+    color: #777;
+	}
+}
+.select-country-code{
+	padding: 2px 0 2px 0px;
+    margin: 0 5px 0 0;
+    // background: #ddd;
+	>.select-icon{
+		visibility: hidden!important;
+	}
+}
+.top-header-text{
+	display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
+    font-weight: bold;
+}
+.top-header{
+	background: #708C3A;
+	border-radius: 35px 0 0 35px;
+	width: 160px;
+	height: 35px;
+	position: absolute;
+	top: 30px;
+	right:0;
+	z-index: 1;
+	color: #fff;
+	display: flex;
+}
+.bg-login-bg{
+	float: left;
+	min-height: 100%;
+	background-attachment: fixed;
+	background-image: url(/assets/bg.png);
+	background-repeat: no-repeat;
+    background-position: center;  
+    background-size: cover;
+}
+.bg-login{
+	float: left;
+    position: relative;
+    height: 100%;width: 100%;
+    text-align: center;
+    padding-top: 100px;
+}
+.border-class{
+	border: 3px solid rgba(0, 0, 0, 0.15);
+    float: left;
+    margin: 10px 10%;
+    width: 80%;
+    overflow: hidden;
+    border-radius: 25px;
+}
+.margin-right{
+	margin-right: 15px;
+}
+.login-button{
+	height:50px;
+	float:left;
+	width: 80%;
+	margin: 10px 10%;
+	font-weight: bold;
+	text-transform: none;
+	font-size: 1rem;
+}
+.logo{
+	float:left;
+	margin: 20px 25%!important;
+	width: 50%;
+	background: transparent;
+	margin: auto
+
+}
+.signup-text{
+	width: 100%;
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 0.8rem;
+	text-align: center;
+	line-height: 2;
+	>.signup-button{
+		font-size: 1rem;
+		color:#708C3A;
+		font-weight: bold;
+	}
+}
+.signup-button:focus{
+	font-size: 1rem;
+		color:#708C3A;
+		font-weight: bold;
+   background-color: #fff4e0;
+}
+.signup-button:hover{
+	font-size: 1rem;
+		color:#708C3A;
+		font-weight: bold;
+   background-color: #fff4e0;
+}
+.login-button:hover{
+	height:50px;
+	float:left;
+	width: 80%;
+	margin: 10px 10%;
+	font-weight: bold;
+	text-transform: none;
+	font-size: 1rem;
+	background-color: #fff4e0;
+}
+.login-button:focus{
+	height:50px;
+	float:left;
+	width: 80%;
+	margin: 10px 10%;
+	font-weight: bold;
+	text-transform: none;
+	font-size: 1rem;
+	background-color: #fff4e0;
+}
+.text-title{
+	font-size: 1rem;
+}

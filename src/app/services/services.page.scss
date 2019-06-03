@@ -1,0 +1,76 @@
+.service-div{
+    box-shadow: 0 0 25px 2px rgba(0,0,0,0.1);
+    padding:10px;
+    border-radius: 5px;
+    >.service-img{
+        box-shadow: 0 0 30px 2px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        width:100%;
+        height:100px;
+    };
+    >.service-name{
+        margin:5px 0;
+        width: 100%;
+        text-align: center;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: 501;
+    }
+}
+.next-button{
+    width: 80%;
+    margin: 20px auto;
+}
+.service-tag-div{
+    padding: 16px 20px 16px 20px;
+    font-size: 0.9rem;
+    font-weight: 501;
+}
+.service-need{
+    width: 100%;
+    text-align: center;
+    padding: 20px 20px 0px 20px;
+    text-transform: capitalize;
+}
+.service-btn-div{
+    width: 100%;
+    float: left;
+    padding: 0px 10px 0px 10px;;
+    text-transform: capitalize;
+    text-align: center;
+}
+.pull-left{
+     width: 48%;
+    float: left;
+}
+.pull-right{
+     width: 48%;
+    float: right;
+}
+.call-chat-button{
+    width: 90%;
+    text-transform: capitalize;
+}
+.service-footer{
+    background: #FFF;
+   border: none;
+}
+.footer-md::before {
+    left: 0;
+    top: -2px;
+    bottom: auto;
+    background-position: left 0 top 0;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-image: none !important;
+    background-repeat: repeat-x;
+    content: "";
+}
+.service-need{
+    width: 100%;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+    text-transform: capitalize;
+    border-bottom: 1px solid #ded6d6;
+}

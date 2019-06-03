@@ -1,0 +1,109 @@
+for fcm ->
+dietinsight.clinic.chd@gmail.com/diet327821
+
+https://www.typescriptlang.org/play/
+http://dev.01s.in/diet-insight/public/users/all-users
+admin@dietinsight.com
+123456
+
+for paytm https://www.npmjs.com/package/cordova-plugin-paytm
+
+https://forum.ionicframework.com/t/paytm-integration-with-ionic3/142827/9
+
+https://github.com/adviraj/ionic-native-paytm
+
+https://stackoverflow.com/questions/51816935/how-to-integrate-paytm-payment-gateway-in-ionic3
+
+https://github.com/ArunYogi/paytm-cordova-plugin/blob/master/README-IONIC.md
+
+YOUR_MERCHANT_ID=wQgieS26123572590198
+YOUR_MERCHANT_KEY=dTN1rjyp!dX36Gsh
+YOUR_WEBSITE=WEBSTAGING
+YOUR_CHANNEL=WAP
+YOUR_INDUSTRY_TYPE=Retail
+   https://developer.paytm.com/docs/v1/payment-gateway   
+
+   ionic cordova plugin add cordova-plugin-paytm --variable MERCHANT_ID="wQgieS26123572590198" --variable INDUSTRY_TYPE_ID="Retail" --variable WEBSITE="WEBSTAGING" --save
+
+
+  1) for payu
+
+   https://stackoverflow.com/questions/36355720/integrating-payu-money-to-ionic-cordova-hybrid-app
+
+   http://www.17educations.com/payumoney-payment-gateway-ionic
+
+   2) Paypal card
+   
+
+Visa
+
+4263982640269299
+
+04/2023
+
+738
+
+Success
+
+
+For ios permission
+
+ <key>NSCameraUsageDescription</key>
+    <string>Allow to access for upload profile picture</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Pick photo from gallery</string>
+
+    For FCM->
+    server key :-AAAAiHJ9T1Y:APA91bHFZVUTeTIYFySmdgW70FJr7hDwLynCWVzD3pIyVW82QRikoKCmbhV2jBVhL9p5MEYrPd5KmnCnvgMrKsKyF5KuPIxBmczHvQVRZFrNDPlPydBu6_39gFZouJUdRF6PuNVGaNGH
+
+    legacy server key :AIzaSyBoysSJCNyRcRwuTyyiQFmeVnEdWP2AsKQ
+
+
+
+    
+
+
+        ICON-
+        57*57
+        114*114
+        40*40
+        80*80
+        120*120
+        50*50
+        100*100
+        60*60
+        120*120
+        180*180
+        72*72
+        144*144
+        76*76
+        152*152
+        167*167
+        29*29
+        58*58
+        87*87
+        1024*1024
+
+        Splash
+
+        640*1136
+        750*1334
+        1242*2208
+        2208*1242
+        2048*1536
+        2732*2048
+        1024*768
+        1536*2048
+        2048*2732
+        768*1024
+        640*960
+        320*480
+        2732*2732
+
+        https://devdactic.com/ionic-realtime-socket-io/
+
+
+
+https://www.freecodecamp.org/news/the-vue-handbook-a-thorough-introduction-to-vue-js-1e86835d8446/
+
+https://www.tutorialspoint.com/vuejs/vuejs_tutorial.pdf

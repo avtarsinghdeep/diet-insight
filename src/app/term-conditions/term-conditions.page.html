@@ -1,0 +1,34 @@
+
+
+<ion-header>
+   <ion-toolbar color="tertiary">
+      <ion-buttons slot="start" no-padding no-margin>
+         <ion-back-button no-padding no-margin></ion-back-button>
+      </ion-buttons>
+      <ion-title class="center-title" text-capitalize>Terms & conditions</ion-title>
+      <ion-buttons slot="end">
+         <ion-button (click)="info()" class="header-buttons">
+            <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+         </ion-button>
+      </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content padding color="light">
+   <h2 text-center style="font-size: 1.4rem;margin: 0px;border-bottom: 1px solid #d8ded6;padding-bottom: 1rem;word-spacing: 3px;">Only join us if you <strong style="display: block;color: #708b3a;font-size: 1rem;word-spacing: 1px;">agree to the following</strong></h2>
+   <ol style="padding-left: 0px;color:rgb(62, 63, 60);list-style-type: none;">
+      <li *ngFor="let term of terms;let i=index" style="width: 100%;margin-bottom: 8px;text-align:justify">
+        <span style="margin-right: 5px;">{{i+1}}.</span><span style="font-size: 1rem;color: #6a6b6a;" [innerHtml]="term.condition"></span><br>
+      </li>
+   </ol>
+   <ion-item lines="none" class="terms_conditions" *ngIf="dataService.tabPage!='contactus'">
+      <ion-checkbox item-left color="primary" [(ngModel)]="selected"></ion-checkbox>
+      <ion-label text-wrap class="status" style="font-size: 0.85rem; color: #171616;">I accept, <span style="color: #708b3a;">terms and conditions</span> of your clinic.</ion-label>
+   </ion-item>
+   <ion-button [disabled]="!selected" text-center style="margin: 0 calc( 50% - 55px ); width: 110px;--border-radius:15px;" margin-top (click)="submit()" *ngIf="dataService.tabPage!='contactus'">Next</ion-button>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="onDropDown()">
+      <ion-fab-button >
+         <ion-icon name="ios-arrow-dropdown"></ion-icon>
+      </ion-fab-button>
+   </ion-fab>
+</ion-content>
+

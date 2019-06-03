@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+  	<ion-buttons slot="start">
+      <ion-back-button no-margin no-padding></ion-back-button>
+    </ion-buttons>
+    <ion-title class="center-title">Medical Profile</ion-title>
+    <ion-buttons slot="end" (click)="skip()">
+    	<ion-button>Skip
+	      <ion-icon slot="icon-only" name="share-alt"></ion-icon>
+	    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="bg-login-bg">
+		<div style="width: 100%;" class="bg-login">
+			<div style="background: #fff;border-radius:10px;width: 100%;padding:10px;" >
+				<form [formGroup]="medical_profile">
+					<ion-item lines="none" no-padding>
+						<ion-label>Height</ion-label>
+					</ion-item>
+					<ion-grid class="detail-selecter" no-padding no-margin>
+						<ion-row no-padding no-margin>
+							<ion-col style="border-right:1px solid #ddd;display: flex;" size="6" no-padding no-margin>
+								<ion-item lines="none" *ngIf="heightSelecter==true">
+									<ion-input [(ngModel)]='cm' [ngModelOptions]="{standalone: true}" type="number" value='' (ionChange)="chageHeight(heightSelecter)" placeholder="Enter height"></ion-input>
+								</ion-item>
+								<ion-item *ngIf="heightSelecter==false" lines="none" style="width: 50%;margin: 0;border-right: 1px solid #ddd;">
+									<ion-input [(ngModel)]='feet' [ngModelOptions]="{standalone: true}" type="number" value='' (ionChange)="chageHeight(heightSelecter)" placeholder="Feet" text-center></ion-input>
+								</ion-item>
+								<ion-item *ngIf="heightSelecter==false" lines="none" style="width: 50%;margin: 0">
+									<ion-input [(ngModel)]='inch' [ngModelOptions]="{standalone: true}" type="number" value='' (ionChange)="em=null;chageHeight(heightSelecter)" placeholder='Inch' text-center></ion-input>
+								</ion-item>
+								<ion-item hidden lines="none">
+									<ion-input type="number" formControlName="height"></ion-input>
+								</ion-item>
+							</ion-col>
+							<ion-col (click)="heightSelecter=true;feet=null;inch=null;" class="{{heightSelecter?'background-selected':'background'}}" style="border-right:1px solid #ddd;" size="3" no-padding no-margin>
+								<p style="margin:16px 0;font-size: 0.7rem;">CMS</p>
+							</ion-col>
+							<ion-col (click)="heightSelecter=false;cm=null;" class="{{heightSelecter?'background':'background-selected'}}" style="" size="3" no-padding no-margin>
+								<p style="margin:16px 0;font-size: 0.7rem;">Ft/Inch</p>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['height'].valid || !medical_profile.controls['height'].touched">
+				      Please enter height 
+				    </div>
+
+					<!-- <ion-item lines="none" class="detail-selecter">
+						<ion-input style="font-size: 0.7rem" placeholder="Enter food allergies"></ion-input>
+					</ion-item> -->
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Weight</ion-label>
+					</ion-item>
+					<ion-grid class="detail-selecter" no-padding no-margin>
+						<ion-row no-padding no-margin>
+							<ion-col style="border-right:1px solid #ddd;" size="8" no-padding no-margin>
+								<ion-item lines="none">
+									<ion-input type="number" formControlName="weight" placeholder="Enter Weight"></ion-input>
+								</ion-item>
+							</ion-col>
+							<ion-col (click)="weightSelecter=true" class="{{weightSelecter?'background-selected':'background'}}" style="border-right:1px solid #ddd;" size="2" no-padding no-margin>
+								<p style="margin:16px 0;font-size: 0.7rem;">Kgs</p>
+							</ion-col>
+							<ion-col (click)="weightSelecter=false" class="{{weightSelecter?'background':'background-selected'}}" style="" size="2" no-padding no-margin>
+								<p style="margin:16px 0;font-size: 0.7rem;">Lbs</p>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['weight'].valid || !medical_profile.controls['weight'].touched">
+				      Please enter weight 
+				    </div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Select Blood Group</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+					    <ion-label style="color:#777;">Select Blood Group</ion-label>
+					    <ion-select formControlName="blood_group" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select Blood Group" cancelText="Cancel" okText="Okay">
+					      <ion-select-option value="A+">A+</ion-select-option>
+					      <ion-select-option value="A-">A-</ion-select-option>
+					      <ion-select-option value="B+">B+</ion-select-option>
+					      <ion-select-option value="B-">B-</ion-select-option>
+					      <ion-select-option value="AB+">AB+</ion-select-option>
+					      <ion-select-option value="AB-">AB-</ion-select-option>
+					      <ion-select-option value="O+">O+</ion-select-option>
+					      <ion-select-option value="O-">O-</ion-select-option>
+					      <ion-select-option value="Don't know">Don't know</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['blood_group'].valid || !medical_profile.controls['blood_group'].touched">
+				      Please select blood group 
+				    </div>
+
+					<ion-item lines="none" no-padding>
+						<ion-label>Medical problems</ion-label>
+					</ion-item>
+					<ion-item lines="none" class="detail-selecter">
+					    <ion-label style="color:#777;">Select Medical problem</ion-label>
+					    <ion-select formControlName="medical_problem" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select Blood Group" multiple="true" cancelText="Cancel" okText="Okay">
+					      <ion-select-option [value]="value.id" *ngFor="let value of medical_problems_list">{{value.problem_name}}</ion-select-option>
+					    </ion-select>
+					</ion-item>
+					<div class="invalid-input1" [hidden]="medical_profile.controls['medical_problem'].valid || !medical_profile.controls['medical_problem'].touched">
+				      Please select Medical problems
+				    </div>
+				</form>
+			</div>
+			<ion-button (click)="submit()" class="next-button" shape="round" color="success">Next</ion-button>
+		</div>
+	</div>
+</ion-content>

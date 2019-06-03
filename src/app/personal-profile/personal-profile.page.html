@@ -1,0 +1,436 @@
+<ion-header>
+   <ion-toolbar color="success">
+      <!-- <ion-buttons slot="start">
+         <ion-back-button no-margin no-padding></ion-back-button>
+      </ion-buttons> -->
+      <ion-title class="center-title">Personal Profile</ion-title>
+        <ion-buttons slot="end">
+      <ion-button (click)="info()" class="header-buttons">
+        <ion-icon src="assets/info.svg" slot="icon-only"></ion-icon>
+      </ion-button>
+      <!-- <ion-button  class="header-buttons">
+        <ion-icon src="" slot="icon-only" ></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+
+     <!--  <ion-buttons slot="end">
+         <ion-button (click)="skip()">
+            Skip
+            <ion-icon slot="icon-only" name="share-alt"></ion-icon>
+         </ion-button>
+      </ion-buttons> -->
+   </ion-toolbar>
+</ion-header>
+<ion-content >
+   <ion-grid style="padding:30px 10px">
+      <ion-row>
+         <ion-col size="4" class="profile-img-div" #col>
+            <img *ngIf="dataService.userData.profile_image!=null&&dataService.userData.profile_image!=undefined&&dataService.userData.profile_image!=''" [src]="dataService.userData.profile_image" width="95px" height="95px" class="profile-img">
+            <img *ngIf="dataService.userData.profile_image==null||dataService.userData.profile_image==undefined||dataService.userData.profile_image==''" src="assets\profile-user.png" width="95px" height="95px" class="profile-img">
+            <div class="edit-profile" (click)="editProfile()">
+               <ion-icon name="ios-create" color="light"></ion-icon>
+            </div>
+         </ion-col>
+         <ion-col size="8">
+            <ion-row>
+               <ion-col text-capitalize style="padding-left:3%;">
+                  {{dataService.userData.firstname}} {{dataService.userData.lastname}}
+               </ion-col>
+            </ion-row>
+            <ion-row>
+               <ion-col size="12" style="padding-left:3%;color:#888;word-break: break-all;">
+                  <ion-icon style="color:#888;margin-bottom: -3px;" name="mail"></ion-icon>
+                  {{dataService.userData.email}}
+               </ion-col>
+            </ion-row>
+            <ion-row>
+               <ion-col size="12" style="padding-left:3%;color:#888">
+                  <ion-icon style="color:#888;margin-bottom: -3px;" name="call"></ion-icon>
+                 {{dataService.userData.country_code}}{{dataService.userData.mobile}}
+               </ion-col>
+            </ion-row>
+         </ion-col>
+      </ion-row>
+   </ion-grid>
+   <div class="seg-div">
+      <ion-segment (ionChange)="segmentChanged($event,selectedTabIndex)" class="seg-btn" [(ngModel)]="selectedTabIndex" >
+      <ion-segment-button value="Personal" style="padding:0!important;--border-color: #fefffe; color: #888888;">
+         <ion-label style="text-transform: uppercase;">Personal</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Medical" disabled={{chack()}} style="padding:0!important;--border-color: #fefffe; color: #888888;">
+         <ion-label style="text-transform: uppercase;">Medical</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Complete" disabled={{chack1()}} style="padding:0!important;--border-color: #fefffe; color: #888888;">
+         <ion-label style="text-transform: uppercase;">More Details</ion-label>
+      </ion-segment-button>
+      </ion-segment>
+   </div>
+   <div  [ngSwitch]="selectedTabIndex">
+      <div class="bg-login-bg" *ngSwitchCase="'Personal'">
+         <div style="width: 100%;" class="bg-login">
+            <div style="background: #fff;border-radius:10px;width: 100%;padding:10px;" >
+               <form [formGroup]="profile">
+                  <ion-item lines="none" no-padding>
+                     <ion-label style="padding-top: 0">Gender<span style="color: #f50b13;">*</span></ion-label>
+                  </ion-item>
+                  <ion-list no-padding>
+                      <ion-item lines="none" no-padding class="detail-selecter">
+                      <ion-radio-group formControlName="gender" style="width: 100%;float: left;">
+                      <ion-item lines="none" no-margin class="login-input-gender-option">
+                      <ion-label>Male</ion-label>
+                      <ion-radio color="success" value="male" checked></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none" no-margin class="login-input-gender-option">
+                      <ion-label>Female</ion-label>
+                      <ion-radio color="success" value="female"></ion-radio>
+                      </ion-item>
+                      </ion-radio-group>
+                      </ion-item>
+                      </ion-list>
+                  <div class="invalid-input1" [hidden]="profile.controls['gender'].valid || !profile.controls['gender'].touched">
+                     Please select gender
+                  </div>
+                  <ion-item lines="none" no-padding>
+                     <ion-label>AGE<span style="color: #f50b13;">*</span></ion-label>
+                  </ion-item>
+                <!--   <ion-item lines="none" no-padding class="detail-selecter">
+                     <ion-datetime formControlName="dob" placeholder="Enter DOB" displayFormat="DD-MM-YYYY"  [(ngModel)]="profileuser.dob"></ion-datetime>
+                  </ion-item> -->
+                   <ion-item lines="none" no-padding class="detail-selecter">
+                     <ion-input type="tel"formControlName="dob" placeholder="Enter your age" style="--padding-start: 15px;"></ion-input>
+                  </ion-item>
+                  <div class="invalid-input1" [hidden]="profile.controls['dob'].valid || !profile.controls['dob'].touched">
+                     Please enter your age.
+                  </div>
+               <!--    <ion-item lines="none" no-padding>
+                     <ion-label>Address</ion-label>
+                  </ion-item>
+                  <ion-item lines="none" class="detail-selecter">
+                     <ion-input formControlName="address" placeholder="Enter Address"></ion-input>
+                  </ion-item>
+                  <div class="invalid-input1" [hidden]="profile.controls['address'].valid || !profile.controls['address'].touched">
+                     Please enter Address
+                  </div> -->
+                 <ion-item lines="none" no-padding>
+                    <ion-label>Country<span style="color: #f50b13;">*</span></ion-label>
+                 </ion-item>
+                 <ion-item id='country1' (click)="selectCountry()" text-wrap lines="none" class="detail-selecter">
+                     <ion-label hidden>Select Country</ion-label>
+                     <!-- (ionChange)="changeState()" -->
+                     <ion-input formControlName="country" name="country" readonly class="country_selecter" placeholder="Select Country"></ion-input>
+                 </ion-item>
+                 <div class="invalid-input1" [hidden]="profile.controls['country'].valid || !profile.controls['country'].touched">
+                    Please select country
+                 </div>
+
+               <ion-item lines="none" no-padding>
+                  <ion-label>State<span style="color: #f50b13;">*</span></ion-label>
+               </ion-item>
+               <ion-item id='state1' (click)="selectState()" text-wrap lines="none" class="detail-selecter">
+                 <ion-label hidden>Select State</ion-label>
+                 <!-- (ionChange)="changeState()" -->
+                 <ion-input formControlName="state" name="state" readonly class="state_selecter" placeholder="Select State"></ion-input>
+               </ion-item>
+               <div class="invalid-input1" [hidden]="profile.controls['state'].valid || !profile.controls['state'].touched">
+                  Please select state
+               </div>
+
+
+              <ion-item lines="none" no-padding>
+                <ion-label>City<span style="color: #f50b13;">*</span></ion-label>
+              </ion-item>
+              <ion-item id='city1' (click)="selectCity()" text-wrap lines="none" class="detail-selecter">
+                <ion-label hidden>Select State</ion-label>
+                <!-- (ionChange)="changeState()" -->
+                <ion-input formControlName="city" name="city" readonly class="state_selecter" placeholder="Select City"></ion-input>
+              </ion-item>
+              <div class="invalid-input1" [hidden]="profile.controls['city'].valid || !profile.controls['city'].touched">
+                  Please select city
+              </div>
+              
+               </form>
+            </div>
+           <!--  <ion-button (click)="submit()" class="submit-button" shape="round" color="success">Next</ion-button> -->
+              <div style="width: 100%;text-align: center;">
+              
+                  <ion-button (click)="submit()" class="submit-button" shape="round" color="success">Next</ion-button>
+              
+           </div>
+         </div>
+      </div>
+      <div *ngSwitchCase="'Medical'">
+         <div class="bg-login-bg">
+            <div style="width: 100%;" class="bg-login">
+               <div style="background: #fff;border-radius:10px;width: 100%;padding:10px;" >
+                  <form [formGroup]="medical_profile">
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Height<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+<!--       jasveen               <ion-grid class="detail-selecter" no-padding no-margin>
+                      <ion-row no-padding no-margin>
+                      <ion-col style="border-right:1px solid #ddd;display: flex;" size="6" no-padding no-margin>
+                      <ion-item lines="none" *ngIf="heightSelecter==false">
+                      <ion-input [(ngModel)]='cm' [ngModelOptions]="{standalone: true}" type="number" value='' (ionChange)="chageHeight(heightSelecter)" placeholder="Enter height"></ion-input>
+                      </ion-item>
+                      <ion-item *ngIf="heightSelecter==true" lines="none" style="width: 50%;margin: 0;border-right: 1px solid #ddd;">
+                      <ion-input [(ngModel)]='feet' [ngModelOptions]="{standalone: true}" type="number" (keyup)="updateList($event,1)" #height1 value='' maxlength="1" (ionChange)="chageHeight(heightSelecter)" placeholder="Feet" text-center></ion-input>
+                      </ion-item>
+                      <ion-item *ngIf="heightSelecter==true" lines="none" style="width: 50%;margin: 0">
+                      <ion-input [(ngModel)]='inch' [ngModelOptions]="{standalone: true}" type="text" (keyup)="updateList($event,2)" #height2 maxlength="1" value='' (ionChange)="cm=null;chageHeight(heightSelecter)" placeholder='Inch' text-center></ion-input>
+                      </ion-item>
+                      <ion-item hidden lines="none">
+                      <ion-input type="number" formControlName="height"></ion-input>
+                      </ion-item>
+                      </ion-col>
+                      <ion-col (click)="heightSelecter=false;" class="{{heightSelecter?'background':'background-selected'}}" style="border-right:1px solid #ddd;" size="3" no-padding no-margin>
+                      <p style="margin:16px 0;font-size: 0.7rem;">CMS</p>
+                      </ion-col>
+                      <ion-col (click)="heightSelecter=true;" class="{{heightSelecter?'background-selected':'background'}}" style="" size="3" no-padding no-margin>
+                      <p style="margin:16px 0;font-size: 0.7rem;">Ft/Inch</p>
+                      </ion-col>
+                      </ion-row>
+                      </ion-grid> -->
+
+                      
+                     <ion-grid class="detail-selecter" no-padding no-margin>
+                        <ion-row no-padding no-margin>
+                           <ion-col style="border-right:1px solid #ddd;display: flex;" size="6" no-padding no-margin>
+                              <ion-item lines="none" *ngIf="heightSelecter==true">
+                                 <ion-input [(ngModel)]='cm' [ngModelOptions]="{standalone: true}" type="number" value='' (ionChange)="chageHeight(heightSelecter)" placeholder="Enter height"></ion-input>
+                              </ion-item>
+                              <ion-item *ngIf="heightSelecter==false" lines="none" style="width: 50%;margin: 0;border-right: 1px solid #ddd;">
+                                 <ion-input [(ngModel)]='feet' [ngModelOptions]="{standalone: true}"  type="number" #height1  maxlength="1" value='' (ionChange)="chageHeight(heightSelecter)"  (keyup)="updateList($event,1)" placeholder="Feet" text-center></ion-input>
+                              </ion-item>
+                              <ion-item *ngIf="heightSelecter==false" lines="none" style="width: 50%;margin: 0">
+                                 <ion-input [(ngModel)]='inch' [ngModelOptions]="{standalone: true}"  type="number" #height2  maxlength="1" value='' (ionChange)="em=null;chageHeight(heightSelecter)" (keyup)="updateList($event,2)" placeholder='Inch' text-center></ion-input>
+                              </ion-item>
+                              <ion-item hidden lines="none">
+                                 <ion-input type="number" formControlName="height"></ion-input>
+                              </ion-item>
+                           </ion-col>
+                           <ion-col (click)="heightSelecter=true;feet=null;inch=null;" class="{{heightSelecter?'background-selected':'background'}}" style="border-right:1px solid #ddd;" size="3" no-padding no-margin>
+                              <p style="margin:16px 0;font-size: 0.7rem;">CMS</p>
+                           </ion-col>
+                           <ion-col (click)="heightSelecter=false;cm=null;" class="{{heightSelecter?'background':'background-selected'}}" style="" size="3" no-padding no-margin>
+                              <p style="margin:16px 0;font-size: 0.7rem;">Ft/Inch</p>
+                           </ion-col>
+                        </ion-row>
+                     </ion-grid>
+                     <div class="invalid-input1" [hidden]="medical_profile.controls['height'].valid || !medical_profile.controls['height'].touched">
+                        Please enter height 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Weight<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-grid class="detail-selecter" no-padding no-margin>
+                        <ion-row no-padding no-margin>
+                           <ion-col style="border-right:1px solid #ddd;" size="8" no-padding no-margin>
+                              <ion-item lines="none">
+                                 <ion-input type="number" formControlName="weight" placeholder="Enter Weight" [(ngModel)]="profileuser.weight"></ion-input>
+                              </ion-item>
+                           </ion-col>
+                           <ion-col (click)="weightSelecter=true" class="{{weightSelecter?'background-selected':'background'}}" style="border-right:1px solid #ddd;" size="2" no-padding no-margin>
+                              <p style="margin:16px 0;font-size: 0.7rem;">Kgs</p>
+                           </ion-col>
+                           <ion-col (click)="weightSelecter=false" class="{{weightSelecter?'background':'background-selected'}}" style="" size="2" no-padding no-margin>
+                              <p style="margin:16px 0;font-size: 0.7rem;">Lbs</p>
+                           </ion-col>
+                        </ion-row>
+                     </ion-grid>
+                     <div class="invalid-input1" [hidden]="medical_profile.controls['weight'].valid || !medical_profile.controls['weight'].touched">
+                        Please enter weight 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Select Blood Group<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-label style="color:#777;">Select Blood Group</ion-label>
+                        <ion-select formControlName="blood_group" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select Blood Group" cancelText="Cancel" okText="Okay" >
+                           <ion-select-option value="A+">A+</ion-select-option>
+                           <ion-select-option value="A-">A-</ion-select-option>
+                           <ion-select-option value="B+">B+</ion-select-option>
+                           <ion-select-option value="B-">B-</ion-select-option>
+                           <ion-select-option value="AB+">AB+</ion-select-option>
+                           <ion-select-option value="AB-">AB-</ion-select-option>
+                           <ion-select-option value="O+">O+</ion-select-option>
+                           <ion-select-option value="O-">O-</ion-select-option>
+                           <ion-select-option value="Don't know">Don't know</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile.controls['blood_group'].valid || !medical_profile.controls['blood_group'].touched">
+                        Please select blood group 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Medical problems<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-label style="color:#777;">Select Medical Problems</ion-label>
+                        <ion-select formControlName="medical_problem" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select Medical Problem" multiple="true" cancelText="Cancel" okText="Okay">
+                           <ion-select-option [value]="value.id" *ngFor="let value of medical_problems_list">{{value.problem_name}}</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile.controls['medical_problem'].valid || !medical_profile.controls['medical_problem'].touched">
+                        Please select Medical problems
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Any food allergies?<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-input formControlName="food_allergy" style="" placeholder="Enter food allergies" autocapitalize=on></ion-input>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile.controls['food_allergy'].valid || !medical_profile.controls['food_allergy'].touched">
+                        Please enter food allergies 
+                     </div>
+                  </form>
+               </div>
+             <!--   <ion-button (click)="medicalsubmit()" class="next-button" shape="round" color="success">Next</ion-button> -->
+                <div style="width: 100%;float: left;">
+               <span style="float: left;width: 48%">
+               <ion-button (click)="onBack(2)" class="submit-button" shape="round" color="success">Back</ion-button>
+           </span>
+               <span  style="float: right;width: 48%">
+                  <ion-button (click)="medicalsubmit()" class="submit-button" shape="round" color="success">Next</ion-button>
+               </span>
+           </div>
+            </div>
+         </div>
+      </div>
+      <div *ngSwitchCase="'Complete'">
+         <div class="bg-login-bg">
+            <div style="width: 100%;" class="bg-login">
+               <div style="background: #fff;border-radius:10px;width: 100%;padding:10px;" >
+                  <form [formGroup]="medical_profile2">
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Choose your food preference<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-label style="color:#777;">Choose food preference</ion-label>
+                        <ion-select formControlName="food_preference" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Choose food preference" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="Vegan">Vegan</ion-select-option>
+                           <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
+                           <ion-select-option value="Non-Vegetarian">Non-Vegetarian</ion-select-option>
+                           <ion-select-option value="Eggetarian (Ovotarian)">Eggetarian (Ovotarian)</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['food_preference'].valid || !medical_profile2.controls['food_preference'].touched">
+                        Please select your food preference 
+                     </div>
+                   <!--   <ion-item lines="none" no-padding>
+                        <ion-label>How many times you eat out?</ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-input formControlName="times_you_eat" style="" placeholder="Enter time"></ion-input>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['times_you_eat'].valid || !medical_profile2.controls['times_you_eat'].touched">
+                        Please enter the value
+                     </div> -->
+                     <ion-item lines="none" no-padding style="font-size: 1.2rem;">
+                        <ion-label>Relationship with</ion-label>
+                     </ion-item>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Smoking<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter" >
+                        <ion-label style="color:#777">Smoking</ion-label>
+                        <ion-select formControlName="smoking_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="I never smoked">I never smoked</ion-select-option>
+                           <ion-select-option value="I have quit smoking">I have quit smoking</ion-select-option>
+                           <ion-select-option value="I smoke occasionally">I smoke occasionally</ion-select-option>
+                           <ion-select-option value="I smoke regularly">I smoke regularly</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['smoking_relation'].valid || !medical_profile2.controls['smoking_relation'].touched">
+                        Please select 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Alcohol<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter" >
+                        <ion-label style="color:#777">Alcohol</ion-label>
+                        <ion-select formControlName="alcohol_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="I never drink">I never drink</ion-select-option>
+                           <ion-select-option value="I have quit drinking">I have quit drinking</ion-select-option>
+                           <ion-select-option value="I drink occasionally">I drink occasionally</ion-select-option>
+                           <ion-select-option value="I drink regularly">I drink regularly</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['alcohol_relation'].valid || !medical_profile2.controls['alcohol_relation'].touched">
+                        Please select 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Tobacco<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter" >
+                        <ion-label style="color:#777">Tobacco</ion-label>
+                        <ion-select formControlName="tobaco_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="I never chewed tobacco">I never chewed tobacco</ion-select-option>
+                           <ion-select-option value="I have quit chewing tobacco">I have quit chewing tobacco</ion-select-option>
+                           <ion-select-option value="I chew tobacco occasionally">I chew tobacco occasionally</ion-select-option>
+                           <ion-select-option value="I chew tobacco regularly">I chew tobacco regularly</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['tobaco_relation'].valid || !medical_profile2.controls['tobaco_relation'].touched">
+                        Please select 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Aerated Drinks<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-label style="color:#777">Aerated Drinks</ion-label>
+                        <ion-select formControlName="aerated_drink_relation" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select one" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="I never drink aerated drinks">I never drink aerated drinks</ion-select-option>
+                           <ion-select-option value="I have quit drinking aerated drinks">I have quit drinking aerated drinks</ion-select-option>
+                           <ion-select-option value="I drink aerated drinks occasionally ">I drink aerated drinks occasionally </ion-select-option>
+                           <ion-select-option value="I drink aerated drinks regularly">I drink aerated drinks regularly</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['aerated_drink_relation'].valid || !medical_profile2.controls['aerated_drink_relation'].touched">
+                        Please select 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Nature of work<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-label style="color:#777">Select Nature of work</ion-label>
+                        <ion-select formControlName="nature_of_work" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select Nature of work" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="Sedentary">Sedentary</ion-select-option>
+                           <ion-select-option value="Moderately Active">Moderately Active</ion-select-option>
+                           <ion-select-option value="Very Active">Very Active</ion-select-option>
+                           <ion-select-option value="Extremely Active">Extremely Active</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['nature_of_work'].valid || !medical_profile2.controls['nature_of_work'].touched">
+                        Please select 
+                     </div>
+                     <ion-item lines="none" no-padding>
+                        <ion-label>Stress Level<span style="color: #f50b13;">*</span></ion-label>
+                     </ion-item>
+                     <ion-item lines="none" class="detail-selecter">
+                        <ion-label style="color:#777">Select Stress Level</ion-label>
+                        <ion-select formControlName="stress_level" style="width: 100%;max-width:100%;padding-left: 0;" placeholder="Select Stress Level" cancelText="Cancel" okText="Okay">
+                           <ion-select-option value="No Stress">No Stress</ion-select-option>
+                           <ion-select-option value="Low Stress">Low Stress</ion-select-option>
+                           <ion-select-option value="Moderate Stress">Moderate Stress</ion-select-option>
+                           <ion-select-option value="High Stress">High Stress</ion-select-option>
+                           <ion-select-option value="Very High Stress">Very High Stress</ion-select-option>
+                        </ion-select>
+                     </ion-item>
+                     <div class="invalid-input1" [hidden]="medical_profile2.controls['stress_level'].valid || !medical_profile2.controls['stress_level'].touched">
+                        Please select 
+                     </div>
+                  </form>
+               </div>
+              <!--  <ion-button (click)="completesubmit()" class="next-button" shape="round" color="success">Submit</ion-button> -->
+                     <div style="width: 100%;float: left;">
+               <span style="float: left;width: 48%">
+               <ion-button (click)="onBack(3)" class="submit-button" shape="round" color="success">Back</ion-button>
+           </span>
+               <span  style="float: right;width: 48%">
+                  <ion-button (click)="completesubmit()" class="submit-button" shape="round" color="success">Submit</ion-button>
+               </span>
+           </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</ion-content>

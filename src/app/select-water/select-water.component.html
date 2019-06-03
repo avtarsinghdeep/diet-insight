@@ -1,0 +1,38 @@
+<div style="width: 100%;background: url(assets/water1.jpg);background-size: cover;background-position: center;position: relative;min-height:380px;">
+	<div style="text-align: center;display: flex;position: absolute;width: 100%;height: 220px;top: 0;left: 0;">
+		<p style="display: inline-block;align-items: center;margin: auto;color: #fff">
+			<span style="font-size: 0.8rem;">
+				Select
+			</span>
+			<br/>
+			Water Glasses
+		</p>
+	</div>
+	<div class="bottum-div">
+		<div class="water-item align-center" no-lines no-margin padding style="height:105px">
+			<ion-row no-padding no-margin style="height: 80px;display: flex;align-items: center;">
+				<ion-col size="3" no-padding no-margin>
+					<button (click)="glasses>1?glasses=glasses-1:''" style="float: left" class="water-buttons" ion-button icon-only item-left>
+						<ion-icon name="md-remove"></ion-icon>
+					</button>
+				</ion-col>
+				<ion-col size="6" no-padding no-margin style="font-size: 3rem;text-align: center">
+					{{glasses}}
+				</ion-col>
+				<ion-col size="3" no-padding no-margin>
+					<button (click)="glasses=glasses+1" style="float: right" class="water-buttons" ion-button icon-only item-right>
+						<ion-icon name="md-add"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+		</div>
+		<div class="buttons-item" lines="none" no-margin no-padding style="text-align: center;margin-top: 8px;">
+			<ion-button no-padding no-margin style="margin:0 2px;width: 80px;border-radius:5px;" (click)="cancel()">
+					CANCEL
+			</ion-button>
+			<ion-button no-padding no-margin style="margin:0 2px;width: 80px;border-radius:5px;" (click)="check()">
+					OK
+			</ion-button>
+		</div>
+	</div>
+</div>
