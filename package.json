@@ -68,7 +68,7 @@
     "express": "^4.16.4",
     "ionic-img-viewer": "^2.9.0",
     "js-sha512": "^0.8.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mx.ferreyra.callnumber": "~0.0.2",
     "ng-socket-io": "^0.2.4",
     "rxjs": "~6.3.3",
