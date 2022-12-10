@@ -65,7 +65,7 @@
     "cordova-plugin-x-socialsharing": "^5.4.4",
     "core-js": "^2.5.4",
     "es6-promise-plugin": "^4.2.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "ionic-img-viewer": "^2.9.0",
     "js-sha512": "^0.8.0",
     "moment": "^2.24.0",
